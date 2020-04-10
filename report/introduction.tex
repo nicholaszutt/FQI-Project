@@ -1,10 +1,10 @@
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{Q}uantum computers are defined by their use of quantum mechanical phenomena in order to manipulate data. Modeling the functionality of these computers is done with quantum circuit which are based on quantum bits.
+\lettrine[nindent=0em,lines=3]{Q}uantum computers are defined by their use of quantum mechanical phenomena in order to manipulate data. Modeling the functionality of these computers is done with quantum circuits which are based on quantum bits (or qubits). In this project we simulate and measure circuits in Qiskit, which is an open-source quantum computing software development framework. In order to analyse the results we use 1- and 2 qubit Quantum state tomography. Quantum state tomography is a method for determining the final quantum state for real computation. Although a quantum state cannot be directly determined from one measurement, preparing the same state and measuring it in different basis allows us to construct an approximation of the quantum state.
 
-The purpose of this report is
+The purpose of this report is to examine various circuit in order to determine if the post measurement method is valid for different circuits and if we can improve the results form various devices by implementing 1- and 2 qubit state tomography. In the case of for example quantum teleportation or entanglement swapping circuit it is impossible to run the original circuits on real devices since they require that initial measurements dictate which operators are used on the qubits. This is impossible on IBMQ backends because they do not support operations after measurements. The goal of these measuremts is to determine the fidelity of a prepared state to a target pure state.
 
-%\cite{nielsen10_quant}
+\cite{nielsen10_quant}
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "report"
