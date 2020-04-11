@@ -159,6 +159,6 @@ GTAGS
 *.fdb_latexmk
 *.fls
 *.log
-.out
+*.out
 *.xml
 *.synctex.gz
