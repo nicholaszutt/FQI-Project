@@ -161,4 +161,4 @@ GTAGS
 *.log
 *.out
 *.xml
-*.synctex.gz
+*.gz
