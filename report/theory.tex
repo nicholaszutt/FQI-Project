@@ -56,9 +56,13 @@ where we sum over all the combinations of basis ($I$,$X$,$Y$ and $Z$). Note that
 Again we can correct for readout error, but for two-qubit systems this is a bit more complicated. Ideally we want the measured expectation value in a particular basis for two different qubits to coincide with the actual expectation values of the most-, least significant qubit and the two-qubit correlation. But the readout is compromised by readout error and crosstalk between the qubits. As a result of these errors the MSQ, LSQ and correlations results are changed.
 \begin{equation}
 \begin{pmatrix}
-a_{1,1}  \\
-a_{2,1}  \\
-b 
+\overline{m}_{MSQ}  \\
+\overline{m}_{LSQ}  \\
+\overline{m}_{corr}
+\end{pmatrix}=\begin{pmatrix}
+\beta_{0,M}  \\
+\beta_{0,L}  \\
+\beta_{0,corr}
 \end{pmatrix}
 \end{equation}
 
