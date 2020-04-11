@@ -53,26 +53,82 @@ where we sum over vectors $\vec{v}_i=\left(v_1,...,v_n\right)$. The entries can 
 \end{equation}
 where we sum over all the combinations of basis ($I$,$X$,$Y$ and $Z$). Note that for a two qubit system we can choose to only measure one bit, that why the $I$ matrix is included here it means you do not measure that particular qubit. So in total we have fifteen coefficient which can be extracted from 9 different circuits for the basis combinations. The nine measurement basis are the two-qubit correlations and then we have 6 basis containing the identity (not counting $II$). These six are the Bloch vectors of the most- and least significant bits, and those are derived from the original measurements by counting up all counts of the basis where there is now an identity matrix. For example if we want to know the expectation value of $\left\langle XI\right\rangle$ we can use three different measurement results ($\left\langle XX\right\rangle$, $\left\langle XY\right\rangle$ and $\left\langle XZ\right\rangle$), and in this case combine the counts from the least significant qubit.
 
-Again we can correct for readout error, but for two-qubit systems this is a bit more complicated. Ideally we want the measured expectation value in a particular basis for two different qubits to coincide with the actual expectation values of the most-, least significant qubit and the two-qubit correlation. But the readout is compromised by readout error and crosstalk between the qubits. As a result of these errors the MSQ, LSQ and correlations results are changed.
+Again we can correct for readout error, but for two-qubit systems this is a bit more complicated. Ideally we want the measured expectation value in a particular basis for two different qubits to coincide with the actual expectation values of the most-, least significant qubit and the two-qubit correlation. But the readout is compromised by readout error and crosstalk between the qubits. As a result of these errors the MSQ, LSQ and correlations results are changed. We define the measured result in a specific basis $\overline{m}_{ij}$ using a matrix notation:
 \begin{equation}
+\label{beta}
+\begin{split}
 \begin{pmatrix}
-\overline{m}_{MSQ}  \\
-\overline{m}_{LSQ}  \\
-\overline{m}_{corr}
+\overline{m}_{ij,MSQ}  \\
+\overline{m}_{ij,LSQ}  \\
+\overline{m}_{ij,corr}
 \end{pmatrix}=\begin{pmatrix}
 \beta_{0,M}  \\
 \beta_{0,L}  \\
 \beta_{0,corr}
+\end{pmatrix}+\\\begin{pmatrix}
+\beta_{1,M}&\beta_{2,M}&\beta_{3,M}  \\
+\beta_{1,L}&\beta_{2,L}&\beta_{3,L}  \\
+\beta_{1,corr}&\beta_{2,corr}&\beta_{3,corr}
+\end{pmatrix}\begin{pmatrix}
+\left\langle I\sigma_j\right\rangle  \\
+\left\langle \sigma_iI\right\rangle  \\
+\left\langle \sigma_i\sigma_j\right\rangle
+\end{pmatrix}
+\end{split}
+\end{equation}
+Note that instead of 2 beta's we now have 4 for the offset $\beta_0$ and for the MSQ, LSQ and correlations correction for each type of measurement (in the following order: $\beta_1$, $\beta_2$ and $\beta_3$). If we define $B$ as the matrix containing beta's (except for $\beta_0$) then we can rewrite the expectation values in terms of the measured results as follows:
+\begin{equation}
+\begin{split}
+\begin{pmatrix}
+\left\langle I\sigma_j\right\rangle_{est}  \\
+\left\langle \sigma_iI\right\rangle_{est}  \\
+\left\langle \sigma_i\sigma_j\right\rangle_{est}
+\end{pmatrix}=B^{-1}\left(\begin{pmatrix}
+\overline{m}_{ij,MSQ}  \\
+\overline{m}_{ij,LSQ}  \\
+\overline{m}_{ij,corr}
+\end{pmatrix}-\begin{pmatrix}
+\beta_{0,M}  \\
+\beta_{0,L}  \\
+\beta_{0,corr}
+\end{pmatrix}\right)
+\end{split}
+\end{equation}
+We need four calibration circuits to calibrate all the $\beta$ coefficients: one circuit that has no operators, a circuit with an X-gate for the MSQ, one for the LSQ and one circuit where both qubits have a X-gate. From these configurations we calculate the desired parameters, where the circuits have letters A,B,C and D in that specific order.
+\begin{equation}
+\begin{pmatrix}
+	\overline{m}_{A,k} \\
+	\overline{m}_{B,k} \\
+	\overline{m}_{C,k} \\
+	\overline{m}_{D,k}
+\end{pmatrix}=\begin{pmatrix}
+1&1&1&1\\
+1&1&-1&-1\\
+1&-1&1&-1\\
+1&-1&-1&1
+\end{pmatrix}\begin{pmatrix}
+\beta_{0,k} \\
+\beta_{1,k} \\
+\beta_{2,k} \\
+\beta_{3,k}
 \end{pmatrix}
 \end{equation}
-
-
-
-
-
-
-
-
+where $k$ can be MSQ, LSQ or correlated and the matrix is called $M_k$. These relation are derived from formula \ref{beta}, where the expectation values are either 1 or -1 depending on the type of circuit. Finally we express the beta's in terms of these calibration results: 
+\begin{equation}
+\begin{pmatrix}
+\beta_{0,k} \\
+\beta_{1,k} \\
+\beta_{2,k} \\
+\beta_{3,k}
+\end{pmatrix}=M_k^{-1}
+\begin{pmatrix}
+\overline{m}_{A,k} \\
+\overline{m}_{B,k} \\
+\overline{m}_{C,k} \\
+\overline{m}_{D,k}
+\end{pmatrix}
+\end{equation}
+In conclusion, it is also possible to correct for readout error in a two-qubit system using calibration circuits and then transforming the results with matrices consisting of the derived beta's.
 
 
 
