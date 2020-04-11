@@ -17,6 +17,240 @@
 \endgroup
 
 \sortlist[entry]{none/global/}
+  \entry{kjaergaard19_super_qubit}{article}{}
+    \name{author}{7}{}{%
+      {{hash=KM}{%
+         family={Kjaergaard},
+         familyi={K\bibinitperiod},
+         given={Morten},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SME}{%
+         family={Schwartz},
+         familyi={S\bibinitperiod},
+         given={Mollie\bibnamedelima E.},
+         giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+      {{hash=BJ}{%
+         family={Braum{\"u}ller},
+         familyi={B\bibinitperiod},
+         given={Jochen},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KP}{%
+         family={Krantz},
+         familyi={K\bibinitperiod},
+         given={Philip},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=WJIJ}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Joel I-Jan},
+         giveni={J\bibinitperiod\bibinitdelim I\bibinitperiod-J\bibinitperiod},
+      }}%
+      {{hash=GS}{%
+         family={Gustavsson},
+         familyi={G\bibinitperiod},
+         given={Simon},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=OWD}{%
+         family={Oliver},
+         familyi={O\bibinitperiod},
+         given={William\bibnamedelima D.},
+         giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{KM+1}
+    \strng{fullhash}{KMSMEBJKPWJIJGSOWD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{abstract}{%
+    Superconducting qubits are leading candidates in the race to build a
+  quantum computer capable of realizing computations beyond the reach of modern
+  supercomputers. The superconducting qubit modality has been used to
+  demonstrate prototype algorithms in the 'noisy intermediate scale quantum'
+  (NISQ) technology era, in which non-error-corrected qubits are used to
+  implement quantum simulations and quantum algorithms. With the recent
+  demonstrations of multiple high fidelity two-qubit gates as well as
+  operations on logical qubits in extensible superconducting qubit systems,
+  this modality also holds promise for the longer-term goal of building
+  larger-scale error-corrected quantum computers. In this brief review, we
+  discuss several of the recent experimental advances in qubit hardware, gate
+  implementations, readout capabilities, early NISQ algorithm implementations,
+  and quantum error correction using superconducting qubits. While continued
+  work on many aspects of this technology is certainly necessary, the pace of
+  both conceptual and technical progress in the last years has been impressive,
+  and here we hope to convey the excitement stemming from this progress.%
+    }
+    \verb{eprint}
+    \verb 1905.13641v2
+    \endverb
+    \field{title}{Superconducting Qubits: Current State of Play}
+    \verb{url}
+    \verb http://arxiv.org/abs/1905.13641v2
+    \endverb
+    \field{journaltitle}{CoRR}
+    \field{eprinttype}{arXiv}
+    \field{eprintclass}{quant-ph}
+    \field{year}{2019}
+  \endentry
+
+  \entry{barends14_super_quant_circuit_at_surfac}{article}{}
+    \name{author}{22}{}{%
+      {{hash=BR}{%
+         family={Barends},
+         familyi={B\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=KJ}{%
+         family={Kelly},
+         familyi={K\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Megrant},
+         familyi={M\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=VA}{%
+         family={Veitia},
+         familyi={V\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SD}{%
+         family={Sank},
+         familyi={S\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=JE}{%
+         family={Jeffrey},
+         familyi={J\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=WTC}{%
+         family={White},
+         familyi={W\bibinitperiod},
+         given={T.\bibnamedelima C.},
+         giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=MJ}{%
+         family={Mutus},
+         familyi={M\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=FAG}{%
+         family={Fowler},
+         familyi={F\bibinitperiod},
+         given={A.\bibnamedelima G.},
+         giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+      {{hash=CB}{%
+         family={Campbell},
+         familyi={C\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=CY}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Y.},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=CZ}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Z.},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=CB}{%
+         family={Chiaro},
+         familyi={C\bibinitperiod},
+         given={B.},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=DA}{%
+         family={Dunsworth},
+         familyi={D\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=NC}{%
+         family={Neill},
+         familyi={N\bibinitperiod},
+         given={C.},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=OP}{%
+         family={O'Malley},
+         familyi={O\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=RP}{%
+         family={Roushan},
+         familyi={R\bibinitperiod},
+         given={P.},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=VA}{%
+         family={Vainsencher},
+         familyi={V\bibinitperiod},
+         given={A.},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=WJ}{%
+         family={Wenner},
+         familyi={W\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=KAN}{%
+         family={Korotkov},
+         familyi={K\bibinitperiod},
+         given={A.\bibnamedelima N.},
+         giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=CAN}{%
+         family={Cleland},
+         familyi={C\bibinitperiod},
+         given={A.\bibnamedelima N.},
+         giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=MJM}{%
+         family={Martinis},
+         familyi={M\bibinitperiod},
+         given={John\bibnamedelima M.},
+         giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BR+1}
+    \strng{fullhash}{BRKJMAVASDJEWTCMJFAGCBCYCZCBDANCOPRPVAWJKANCANMJM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1038/nature13171
+    \endverb
+    \field{number}{7497}
+    \field{pages}{500\bibrangedash 503}
+    \field{title}{Superconducting Quantum Circuits At the Surface Code
+  Threshold for Fault Tolerance}
+    \verb{url}
+    \verb https://doi.org/10.1038/nature13171
+    \endverb
+    \field{volume}{508}
+    \field{journaltitle}{Nature}
+    \field{year}{2014}
+  \endentry
+
   \entry{nielsen10_quant}{book}{}
     \name{author}{2}{}{%
       {{hash=NM}{%
@@ -40,7 +274,7 @@
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
     \field{isbn}{9781107002173}
-    \field{title}{Quantum computation and quantum information}
+    \field{title}{Quantum Computation and Quantum Information}
     \list{location}{1}{%
       {Cambridge New York}%
     }
