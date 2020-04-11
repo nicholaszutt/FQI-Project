@@ -1,5 +1,16 @@
 \section{Theory}
-In a classical computer its internal state is measured at different points in time in order to debug the system. However, for a quantum computer, the analogy would be the measurement of its density matrix, which is called state tomography. We first define the density matrix of a single qubit:
+In a classical computer its internal state is measured at different points in time in order to debug the system. However, for a quantum computer, the analogy would be the measurement of its density matrix, which is called state tomography. We first define the density matrix of a single qubit,
 \begin{equation}
 \rho=\frac{1}{2}\left(I+\sum_i\alpha_i\sigma_i\right)
 \end{equation}
+where $\sigma_i$ are all the Pauli-matrices and $\alpha_i$ are the real-valued coefficients. Using the trace orthogonality of the Pauli-matrices,
+\begin{equation}
+\Tr\left(\sigma_j\sigma_k\right)=2\delta_{jk}
+\end{equation}
+we can derive the real-valued coefficients by calculating the expectation values of the different Pauli-matrices.
+\begin{equation}
+\Tr\left(\rho\sigma_i\right)=\left\langle\sigma_i\right\rangle=\alpha_i
+\end{equation}
+By measuring the single qubit in the different basis (X,Y and Z) we can derive these expectation values. This requires a repeated preparation and measuring of the final state. In reality, the measured expectation values are estimations of $\left\langle X\right\rangle,\left\langle Y\right\rangle,\left\langle Z\right\rangle$. Often in a quantum computer the measurements are only done in the $Z$-basis. Other operators are realized using rotation operators before the final measurement.
+
+In order to convert the estimated- to real expectation values we correct for readout error, which will give us a better estimation of the density matrix $\rho$. If   
