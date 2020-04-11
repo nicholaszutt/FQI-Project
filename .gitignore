@@ -149,5 +149,16 @@ Untitled*
 GPATH
 GRTAGS
 GTAGS
-MultipleArchitectures/MultipleArchitecturesTest_Jerry.ipynb
 *.ipynb
+
+# Latex auxilliary files
+*.aux
+*.bbl
+*.blg
+*blx.bib
+*.fdb_latexmk
+*.fls
+*.log
+.out
+*.xml
+*.synctex.gz
