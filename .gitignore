@@ -153,6 +153,7 @@ GTAGS
 
 # Latex auxilliary files
 *.aux
+auto/
 *.bbl
 *.blg
 *blx.bib
