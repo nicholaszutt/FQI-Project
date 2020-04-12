@@ -162,5 +162,5 @@ auto/
 *.log
 *.out
 *.xml
-report.syncte.gz
-report.pdf
+*.synctex.gz
+*.pdf
