@@ -70,11 +70,11 @@ Using the last line we can define the parameters $\beta_0$ and $\beta_1$,
 From error measurements $\beta_0$ and $\beta_1$ are derived by
 measuring different states on all relevant qubits. These estimates of $\beta_0$
 and $\beta_1$ are accurate because we know that the initialization of the states created for the readout error
-measurements is almost perfect (99\% accurate) and the gates used to create the
+measurements has a very high fidelity (99\% accurate) and the gates used to create the
 final state measurements (in the case of $\langle \hat{X}\rangle$,
-$\langle \hat{Y}\rangle$) also have an extremely high fidelity (exceeding
+$\langle \hat{Y}\rangle$) are almost perfect (fidelities exceeding
 99.9\%)\cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}. From this
-expression $\langle \hat{Z}\rangle$ and the other expectation values
+expression, $\langle \hat{Z}\rangle$ and the other expectation values
 $\langle \hat{\sigma}_i\rangle$ are derived from all the different
 measurements $\overline{m}_i$.
 
@@ -128,11 +128,11 @@ significant qubit.
 Again we can correct for readout error, but for two-qubit systems this is a bit
 more complicated. Ideally we want the measured expectation value in a particular
 basis for two different qubits to coincide with the actual expectation values of
-the most-, least significant qubit and the two-qubit correlation. But the
+the most- and least-significant qubit and the two-qubit correlation. But the
 readout is compromised by readout error and crosstalk between the qubits. As a
 result of these errors the most-significant qubit (MSQ), least-significant qubit
-(LSQ) and correlations results are all affected. We
-define the measured result in a specific basis $\overline{m}_{ij}$ as
+(LSQ) and correlations results are all affected. The measured result
+in a specific basis $\overline{m}_{ij}$ is related to the expectation values by
 
 \begin{equation}
 \label{beta}
@@ -149,11 +149,10 @@ define the measured result in a specific basis $\overline{m}_{ij}$ as
 \end{split}
 \end{equation}
 
-Note that instead of 2 beta's we now have 4 for the offset
-$\beta_0$ and for the MSQ, LSQ and correlations correction for each type of
-measurement (in the following order: $\beta_1$, $\beta_2$ and $\beta_3$). If we
-define $B$ as the matrix containing beta's (except for $\beta_0$) then we can
-rewrite the expectation values in terms of the measured results as follows:
+Rather than the two parameters $\beta_0$ and $\beta_1$, we now have a $3x3$
+matrix $B$ and an offset vector of $\beta$ values for the MSQ, LSQ, and
+correlations. These parameters give the following correction to the expectation values
+
 \begin{equation}
 \begin{split}
 \begin{pmatrix} \left\langle I\sigma_j\right\rangle_{est} \\ \left\langle
@@ -163,11 +162,14 @@ rewrite the expectation values in terms of the measured results as follows:
 \end{pmatrix}-\begin{pmatrix} \beta_{0,M} \\ \beta_{0,L} \\ \beta_{0,corr}
 \end{pmatrix}\right)
 \end{split}
-\end{equation} We need four calibration circuits to calibrate all the $\beta$
-coefficients: one circuit that has no operators, a circuit with an X-gate for
-the MSQ, one for the LSQ and one circuit where both qubits have a X-gate. From
-these configurations we calculate the desired parameters, where the circuits
-have letters A,B,C and D in that specific order.
+\end{equation}
+
+Four calibration circuits are required to determine all the parameters in $B$
+and in the vector $\vec{\beta}$. Each one initializes the state of the two qubits in
+$|00\rangle$, $|01\rangle$, $|10\rangle$, and $|11\rangle$. And each of these
+four initial states give us a part of what is needed to construct $B$ and
+$\vec{\beta}$, from the equation
+
 \begin{equation}
 \begin{pmatrix} \overline{m}_{A,k} \\ \overline{m}_{B,k} \\ \overline{m}_{C,k}
 \\ \overline{m}_{D,k}
@@ -176,18 +178,27 @@ have letters A,B,C and D in that specific order.
 \beta_{3,k}
 \end{pmatrix}
 \end{equation} where $k$ can be MSQ, LSQ or correlated and the matrix is called
-$M_k$. These relation are derived from formula \ref{beta}, where the expectation
+$M_k$. These relations are derived from formula \ref{beta}, where the expectation
 values are either 1 or -1 depending on the type of circuit. Finally we express
 the beta's in terms of these calibration results:
+
 \begin{equation}
 \begin{pmatrix} \beta_{0,k} \\ \beta_{1,k} \\ \beta_{2,k} \\ \beta_{3,k}
 \end{pmatrix}=M_k^{-1}
 \begin{pmatrix} \overline{m}_{A,k} \\ \overline{m}_{B,k} \\ \overline{m}_{C,k}
 \\ \overline{m}_{D,k}
 \end{pmatrix}
-\end{equation} In conclusion, it is also possible to correct for readout error
-in a two-qubit system using calibration circuits and then transforming the
-results with matrices consisting of the derived beta's.
+\end{equation}
+
+With these values, we can correct for the error accrued when performing state
+measurement, and determine the two-qubit states that our circuits actually
+produce, rather than the states that we see when we naively combine circuit and
+measurement errors. This is a particularly important task to perform.
+Superconducting qubits have in general very high fidelity single gate operations,
+and likewise near perfect initialization, so the main source of error is in fact
+from measurement. Without correcting for this error a true characterization of
+the circuits would not be possible, as any output fidelity would be massively
+depressed. 
 
 %%% Local Variables:
 %%% mode: latex
