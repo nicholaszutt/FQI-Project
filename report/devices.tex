@@ -1,33 +1,90 @@
 \section{Devices}
 Superconducting qubits are composed of an inductor $L$ connected to a capacitor
 $C$. These are described by the equations of motion of a harmonic oscillator,
-with the canonical position usually defined as the flux $\phi$ though the
-inductor, which oscillates out of phase with the charge on the capacitor, this
+with flux $\phi$ through the inductor playing the role of the canonical position 
+which oscillates out of phase with the charge $Q$ on the capacitor, this
 charge playing the part of the canonical momentum
-\cite{devoret04_implem_qubit_with_super_integ_circuit}.
+\cite{devoret04_implem_qubit_with_super_integ_circuit}. This LC oscillator has a
+resonance frequency that can be specifically engineered as it is given by
+$\omega_0 = \nicefrac{1}{\sqrt{LC}}$. The superconducting nature of the
+oscillator is of critical importance to maintaining coherence as a
+superposition of the ground and first excited states of the LC oscillator decays
+on a time scale given by $\nicefrac{1}{RC}$, where $R$ is the resistance. LC
+circuits, as macroscopic qubits, are attractive partly because their parameters
+can be engineered to whatever values best suit the system in question, but it
+should be noted that their
+size also entail some individuality to each qubit that may lead to variations in
+their functioning.
+
+\begin{figure}[h]
+  \includegraphics[width=0.48\textwidth]{images/energy_spacing_transmon.png}
+  \caption{The energy spacing between levels of an LC oscillator are ordinarily
+    even, anharmonicity, introduced through the inclusion of a Josephson tunnel
+    junction, splits the level spacing. Figure from \cite{dickel20_how_to_make_artif_atoms}.}
+  \label{fig:energy_spacing_transmon}
+\end{figure}
 
 A simple LC circuit alone, though, cannot be an effective qubit. In order to be
 able to control the qubit state effectively, the transition frequency between
 the states $|0\rangle$ and $|1\rangle$ have to be different enough from all
 other transitions, but of course, all transitions between neighbouring states in
-the harmonic oscillator potential are the same size. A degree of inharmonicity,
-brought in by Josephson tunnel junctions with a non-linear inductance, make it
-possible to individually drive transitions between specific levels in the LC
-oscillator. The qubit can then be defined as the two lowest energy states, where
-all other energy states are inaccessible as long as the driving frequencies for
-transitions are properly calibrated.
+the harmonic oscillator potential are the same size. A degree of anharmonicity
+is brought in by a Josephson tunnel element with its own non-linear inductance
+which is added to the circuit in parallel with the capacitor, make it possible
+to individually drive transitions between specific levels in the LC oscillator,
+as shown in Fig. \ref{fig:energy_spacing_transmon}. The system's dynamics can
+then be effectively confined to just the two lowest energy levels as long as the
+driving frequencies for transitions are properly tuned
+\cite{devoret04_implem_qubit_with_super_integ_circuit}.
 
-Three devices at the IBM Quantum Experience were chosen to be used in this
-project. In this section we will provide an overview of these devices to provide
-context for the results that will be discussed below. For reasons unknown, IBM names its
-superconducting devices after major cities, and those we are interested in are code-named
-Burlington, Yorktown and Melbourne.
+\begin{figure}[h]
+  \includegraphics[width=0.48\textwidth]{images/transmon_diagram.png}
+  \caption{A schematic of a transmon qubit. The left superconductor maintains
+    anharmonicity while the right superconductor helps protect it from charge
+    noise. Figure from \cite{dickel20_how_to_make_artif_atoms}.}
+  \label{fig:transmon}
+\end{figure}
+
+The devices at the IBM Quantum Experience are transmon qubits. This type of
+superconducting charge qubit, shown in Fig. \ref{fig:transmon}, consists of a qubit
+circuit coupled to a cavity circuit (a harmonic LC oscillator) which as a result
+has a reduced sensitivity to
+charge noise and has recently shown coherence times of up to 95$\mu$s and
+relaxation times of around 70$\mu$s.
+\cite{rigetti12_super_qubit_waveg_cavit_with}. Three devices at the IBM Quantum
+Experience were chosen to be used in this project. In this section we will
+provide an overview of these devices to provide context for the results that
+will be discussed below. IBM names its superconducting devices after major
+cities, and those we are interested in are code-named Burlington, Melbourne and
+Yorktown.
 
 \subsection{Burlington}
 
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_burlington.png}
+  \label{burlington_connections}
+  \caption{The T-shaped Burlington device. Though a device with relatively small
+    error rates, the limited connectivity play a big role in the device's
+    performance, as many extra gates are needed to implement circuits when there
+    are few direct connections. Figure from \cite{ibmq_burlington}.}
+\end{figure}
+
+\begin{figure}[h]
+  \includegraphics[width=0.48\textwidth]{images/connection_diagram_melbourne.png}
+  \label{melbourne_connections}
+  \caption{The largest publicly available device at IBM Q. The individual
+    character of the transmons is visible in this diagram through the large
+    variability in the error rates. Figure from \cite{ibmq_16_melbourne}.}
+\end{figure}
+
+
+\begin{figure}[h]
+  \includegraphics[width=0.48\textwidth]{images/connection_diagram_ibmqx2.png}
+  \label{yorktown_connections}
+  \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
+    equally as important as the single-qubit and CNOT error rates is the degree
+    of connectivity in a device. Figure from \cite{ibmq_yorktown}.}
 \end{figure}
 
 %%% Local Variables:
