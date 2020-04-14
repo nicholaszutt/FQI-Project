@@ -12,25 +12,19 @@ initial state's density matrix and thus find out what state was realized
 collapsed to \textit{after} the measurement.
 We first define the density matrix of a single
 qubit,
-
 \begin{equation} \rho=\frac{1}{2}\left(\mathbb{1}+\sum_{i=1}^3\alpha_i\sigma_i\right)
 \end{equation}
-
 where $\mathbb{1}$ is the 2-D identity matrix, $\sigma_i$ are all the Pauli-matrices and $\alpha_i$ are
 real-valued coefficients \cite{nielsen10_quant}. Using the trace orthogonality of the
 Pauli-matrices (because the trace of an operator gives the average value of the
 observable),
-
 \begin{equation} \Tr\left(\sigma_j\sigma_k\right)=2\delta_{jk}
 \end{equation}
-
 we can derive the real-valued coefficients by calculating the
 expectation values of the different Pauli-matrices.
-
 \begin{equation}
 \Tr\left(\rho\sigma_i\right)=\left\langle\sigma_i\right\rangle=\alpha_i
 \end{equation}
-
 By measuring the single qubit in the different bases ($X$, $Y$ and
 $Z$) we can derive these expectation values. This requires a repeated
 preparation and measuring of the final state, and in the limit of a large sample
@@ -48,25 +42,22 @@ $\rho_s$. If $\epsilon_{10}$, $\epsilon_{01}$ are the probabilities that a
 $|0\rangle$ state returns an eigenvalue of -1 and a
 $|1\rangle$ state returns an eigenvalue of 1 respectively (note that this
 is not a quantum effect but classical error), and if $\alpha$, $\beta$ are
-coefficients of the final state
-$|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$,
+coefficients of the final state $|\psi\rangle=\alpha|0\rangle+\beta|1\rangle$,
 then the measured expectation value $\overline{m}$ in the $Z$-basis is
-
-\begin{align*}
+\begin{equation*}
+\begin{split}
   \overline{m} &=\left(1-\epsilon_{10}\right)\left|\alpha\right|^2+\epsilon_{01}\left|\beta\right|^2\\
 &-\left(1-\epsilon_{01}\right)\left|\beta\right|^2
 -\epsilon_{10}\left|\alpha\right|^2\\
 &=\left(\epsilon_{01}-\epsilon_{10}\right)+\left(1-\epsilon_{01}-\epsilon_{10}\right)\left(\left|\alpha\right|^2-\left|\beta\right|^2\right)\\
-\end{align*}
-
+\end{split}
+\end{equation*}
 Using the last line we can define the parameters $\beta_0$ and $\beta_1$,
-
 \begin{equation}
   \begin{split}
    \overline{m}_Z =\beta_0+\beta_1\left\langle \hat{Z}\right\rangle
 \end{split}
 \end{equation}
-
 From error measurements $\beta_0$ and $\beta_1$ are derived by
 measuring different states on all relevant qubits. These estimates of $\beta_0$
 and $\beta_1$ are accurate because we know that the initialization of the states created for the readout error
@@ -76,42 +67,33 @@ $\langle \hat{Y}\rangle$) are almost perfect (fidelities exceeding
 99.9\%)\cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}. From this
 expression, $\langle \hat{Z}\rangle$ and the other expectation values
 $\langle \hat{\sigma}_i\rangle$ are derived from all the different
-measurements $\overline{m}_i$.
-
+measurements $\overline{m}_i$ \cite{QuantumStateTomography}.
 \begin{equation}
 \begin{split} \left\langle
 \hat{\sigma}_i\right\rangle=\frac{\overline{m}_i-\beta_0}{\beta_1}
 \end{split}
 \end{equation} So the final density matrix $\rho_{fin}$ is defined as:
-
 \begin{equation}
 \begin{split}
 \rho_{fin}=\frac{1}{2}\left(I+\sum_{i=1}^3\frac{\overline{m}_i-\beta_0}{\beta_1}\sigma_i\right)
 \end{split}
 \end{equation}
-
-
 \subsection{Two-Qubit State Tomography} This procedure can be generalized to
 more qubits, and to do so we start with the $n$-qubit generalization of the
 density matrix 
-
 \begin{equation}
 \rho=\sum_{\vec{v}_i}\frac{\Tr\left(\sigma_{v_1}\otimes\cdots\otimes\sigma_{v_n}\rho\right)\sigma_{v_1}\otimes\cdots\otimes\sigma_{v_n}}{2^n}
 \end{equation}
-
 where we sum over vectors $\vec{v}_i=\left(v_1,...,v_n\right)$ \cite{nielsen10_quant}.
 The entries can be all the different combinations of basis. What these products
 of Pauli matrices mean is that we measure different bits in various basis.
 Rewriting this general expression for a two qubit system gives
-
 \begin{equation*}
 \rho=\frac{1}{4}\sum_{\vec{v}_i}\Tr\left(\sigma_{v_1}\otimes\sigma_{v_2}\rho\right)\sigma_{v_1}\otimes\sigma_{v_2}
-\end{equation*}
-
+\end{equation*}\newpage
 \begin{equation}
-=\frac{1}{4}\sum_{\vec{v}_i}\left\langle\sigma_{v_1}\otimes\sigma_{v_2}\right\rangle\sigma_{v_1}\otimes\sigma_{v_2}
+\rho=\frac{1}{4}\sum_{\vec{v}_i}\left\langle\sigma_{v_1}\otimes\sigma_{v_2}\right\rangle\sigma_{v_1}\otimes\sigma_{v_2}
 \end{equation}
-
 where we sum over all the combinations of basis ($\mathbb{1}$, $X$, $Y$ and
 $Z$). So in total we have fifteen coefficients which can be extracted
 from 9 different circuits for the basis combinations. The nine measurement bases
@@ -133,7 +115,6 @@ readout is compromised by readout error and crosstalk between the qubits. As a
 result of these errors the most-significant qubit (MSQ), least-significant qubit
 (LSQ) and correlations results are all affected. The measured result
 in a specific basis $\overline{m}_{ij}$ is related to the expectation values by
-
 \begin{equation}
 \label{beta}
 \begin{split}
@@ -148,11 +129,11 @@ in a specific basis $\overline{m}_{ij}$ is related to the expectation values by
 \end{pmatrix}
 \end{split}
 \end{equation}
-
-Rather than the two parameters $\beta_0$ and $\beta_1$, we now have a $3x3$
+Rather than the two parameters $\beta_0$ and $\beta_1$, we now have a 3x3
 matrix $B$ and an offset vector of $\beta$ values for the MSQ, LSQ, and
-correlations. These parameters give the following correction to the expectation values
-
+correlations. 
+\newpage
+These parameters give the following correction to the expectation values
 \begin{equation}
 \begin{split}
 \begin{pmatrix} \left\langle I\sigma_j\right\rangle_{est} \\ \left\langle
@@ -163,13 +144,11 @@ correlations. These parameters give the following correction to the expectation 
 \end{pmatrix}\right)
 \end{split}
 \end{equation}
-
 Four calibration circuits are required to determine all the parameters in $B$
 and in the vector $\vec{\beta}$. Each one initializes the state of the two qubits in
 $|00\rangle$, $|01\rangle$, $|10\rangle$, and $|11\rangle$. And each of these
 four initial states give us a part of what is needed to construct $B$ and
 $\vec{\beta}$, from the equation
-
 \begin{equation}
 \begin{pmatrix} \overline{m}_{A,k} \\ \overline{m}_{B,k} \\ \overline{m}_{C,k}
 \\ \overline{m}_{D,k}
@@ -180,8 +159,7 @@ $\vec{\beta}$, from the equation
 \end{equation} where $k$ can be MSQ, LSQ or correlated and the matrix is called
 $M_k$. These relations are derived from formula \ref{beta}, where the expectation
 values are either 1 or -1 depending on the type of circuit. Finally we express
-the beta's in terms of these calibration results:
-
+the beta's in terms of these calibration results \cite{QuantumStateTomography}:
 \begin{equation}
 \begin{pmatrix} \beta_{0,k} \\ \beta_{1,k} \\ \beta_{2,k} \\ \beta_{3,k}
 \end{pmatrix}=M_k^{-1}
@@ -189,7 +167,6 @@ the beta's in terms of these calibration results:
 \\ \overline{m}_{D,k}
 \end{pmatrix}
 \end{equation}
-
 With these values, we can correct for the error accrued when performing state
 measurement, and determine the two-qubit states that our circuits actually
 produce, rather than the states that we see when we naively combine circuit and
@@ -198,7 +175,7 @@ Superconducting qubits have in general very high fidelity single gate operations
 and likewise near perfect initialization, so the main source of error is in fact
 from measurement. Without correcting for this error a true characterization of
 the circuits would not be possible, as any output fidelity would be massively
-depressed. 
+depressed.\newpage
 
 %%% Local Variables:
 %%% mode: latex
