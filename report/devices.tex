@@ -22,7 +22,7 @@ junction, splits the level spacing. Figure from
 \cite{dickel20_how_to_make_artif_atoms}.}
   \label{fig:energy_spacing_transmon}
 \end{figure}
-
+\newpage
 A simple LC circuit alone, though, cannot be an effective qubit. In order to be
 able to control the qubit state effectively, the transition frequency between
 the states $|0\rangle$ and $|1\rangle$ have to be different enough from all
@@ -49,8 +49,7 @@ superconducting charge qubit, shown in Fig. \ref{fig:transmon}, consists of a
 qubit circuit coupled to a cavity circuit (a harmonic LC oscillator) which as a
 result has a reduced sensitivity to charge noise and has recently shown
 coherence times of up to 95$\mu$s and relaxation times of around 70$\mu$s.
-\cite{koch07_charg_insen_qubit_desig_deriv,
-rigetti12_super_qubit_waveg_cavit_with}. Three devices at the IBM Quantum
+\cite{koch07_charg_insen_qubit_desig_deriv,rigetti12_super_qubit_waveg_cavit_with}. Three devices at the IBM Quantum
 Experience were chosen to be used in this project. In this section we will
 provide an overview of these devices to provide context for the results that
 will be discussed below. IBM names its superconducting devices after major
@@ -86,7 +85,6 @@ The individual character of the qubits is most easily seen in the Melbourne
 device. Due to variability in the manufacture of the macroscopic qubits, some
 come out noisier than others, and the connections between them likewise suffer
 some in-homogeneity.
-
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/connection_diagram_melbourne.png}
   \caption{The largest publicly available device at IBM Q. The individual
@@ -100,7 +98,6 @@ The final backend under consideration, shown in Fig.
 an average single-qubit error rate of 0.05\% and average CNOT error of 2.276\%.
 However, as we will see in the results, these gate error rates are far from the
 whole story when it comes to explaining the performance of various backends.
-
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/connection_diagram_ibmqx2.png}
   \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
@@ -108,7 +105,17 @@ equally as important as the single-qubit and CNOT error rates is the degree of
 connectivity in a device. Figure from \cite{ibmq_yorktown}.}
   \label{fig:yorktown_connections}
 \end{figure}
-
+\newpage
+\begin{table} \centering
+	\begin{tabular}{lrrrr} \toprule Backend & $U_2 (\%)$ & $CNOT (\%)$ \\ \midrule
+		Burlington & 0.050 & 1.213 \\ Melbourne & 1.258 & 2.156 \\ Yorktown & 0.689 &
+		2.275 \\ \bottomrule
+	\end{tabular}
+	\caption{Average percent error on single-qubit $U_2$ gates and CNOT gates for
+		the three devices used to implement the circuits of interest. All averages taken
+		from data provided at \cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}.}
+	\label{tb:average_errors}
+\end{table}
 One consideration that is not reflected in the gate error rates which has a
 significant impact on the fidelity of the outputs of circuits is the number of
 direct connections between qubits. Burlington may have the lowest average error
@@ -118,17 +125,6 @@ output fidelities in every case. In fact, because the number of gates required
 to implement each circuit will vary from device to device, the optimal backend
 on which to conduct a given computation will ultimately depend more on the
 configuration of each backend, rather than gate errors.
-
-\begin{table} \centering
-  \begin{tabular}{lrrrr} \toprule Backend & $U_2 (\%)$ & $CNOT (\%)$ \\ \midrule
-Burlington & 0.050 & 1.213 \\ Melbourne & 1.258 & 2.156 \\ Yorktown & 0.689 &
-2.275 \\ \bottomrule
-  \end{tabular}
-  \caption{Average percent error on single-qubit $U_2$ gates and CNOT gates for
-the three devices used to implement the circuits of interest. All averages taken
-from data provided at \cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}.}
-  \label{tb:average_errors}
-\end{table}
 
 %%% Local Variables:
 %%% mode: latex
