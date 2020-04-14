@@ -67,9 +67,52 @@ This thing here is to test a full size picture don't delete.
 \end{figure*}
 
 
-
+\newpage
 \subsection{Entanglement Swapping}
-As for teleportation we first look at the main result of the entanglement swapping circuit in Fig. 
+As for teleportation we first look at the main result of the entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. 
+
+\begin{figure}[h] \centering
+	\includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
+	\caption{Fidelity results for the Entanglement Swapping protocol. Error bars are
+		estimated by taking the variance over 15 runs of 8,192 shots each (a total of
+		122,880 shots).}
+	\label{fig:swap_histogram}
+\end{figure}
+
+In order to check the readout calibration, it is useful to compare Pauli sets of
+the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
+\begin{figure}
+	\begin{subfigure}{.5\textwidth} \centering % include first image
+		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_sim.png}
+		\caption{The expected Pauli set.}
+		\label{fig:swap_pauli_sim}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth} \centering % include second image
+		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_dev.png}
+		\caption{The output Pauli set for the device.}
+		\label{fig:swap_pauli_dev}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth} \centering % include second image
+		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_cal.png}
+		\caption{The calibrated device Pauli set.}
+		\label{fig:swap_pauli_dev}
+	\end{subfigure}
+	\caption{The expectation values match those we expect after calibrating for
+		readout error. Errors in measurement contribute greatly to the low fidelity of
+		our final states. The type of correction seen in the figures above accounts for
+		the increased fidelity for the calibrated device in Fig.
+		\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the
+		Melbourne backend.}
+	\label{fig:tele_paulis}
+\end{figure}
+
+
+
+
+
+
+
+
 \subsection{Entanglement Purification}
 \subsection{Grover's Algorithm}
 
