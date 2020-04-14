@@ -7,18 +7,18 @@ summarized in Fig. \ref{fig:teleport_histogram}. The ideal simulation fidelities
 are all within statistical error of unity, an important check to ensure that the
 state, reconstructed through tomography, and post-measurement selection scheme
 both are working as expected. The Noisy Simulator is modelled using the
-single-qubit errors, CNOT errors and a model of readout error in each backend.
-As we will continue to see with the other circuits, the noise model overestimate
-the performance of the backend, but interestingly in this case, for the
-Melbourne device, we find that the noise model almost matches that of the
-device.
+single-qubit errors, CNOT errors and a model of readout error in each backend
+\cite{qiskit_org}. As we will continue to see with the other circuits, the noise
+model overestimate the performance of the backend, but interestingly in this
+case, for the Melbourne device, we find that the noise model almost matches that
+of the device.
 
 The noise model captures the error in the Burlington device much less
 accurately. We would expect that Burlington would perform almost as well as
 Yorktown from the estimates on the noisy simulator, but in fact it performs the
 worst of the three. We suspect, as will be described in more detail below, that
 this is a consequence of the number of gates needed to implement the circuit on
-the real device. 
+the real device.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
@@ -30,7 +30,34 @@ unity.}
 \end{figure}
 
 In order to check the readout calibration, it is useful to compare Pauli sets of
-the different outcomes. 
+the different outcomes. We can see in Fig. \ref{fig:tele_pauli_sim}
+
+\begin{figure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    % include first image
+    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_sim.png}  
+    \caption{Put your sub-caption here}
+    \label{fig:tele_pauli_sim}
+  \end{subfigure}
+  \newline
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    % include second image
+    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_dev.png}  
+    \caption{Put your sub-caption here}
+    \label{fig:tele_pauli_dev}
+  \end{subfigure}
+  \newline
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    % include second image
+    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_cal.png}  
+    \caption{Put your sub-caption here}
+    \label{fig:tele_pauli_dev}
+  \end{subfigure}
+  \caption{The Pauli set plots for teleportation. We find that}
+\end{figure}
 
 \subsection{Entanglement Swapping}
 \subsection{Entanglement Purification}
