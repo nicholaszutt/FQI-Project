@@ -76,7 +76,18 @@ for all qubits and a CNOT error rate of less than 1.645\%.
   \label{fig:burlington_connections}
 \end{figure}
 
-In Fig. \ref{fig:melbourne_connections}, 
+In the Melbourne backend (Fig. \ref{fig:melbourne_connections}), single-qubit
+gate errors rise to 0.746\%, though the qubits used in all the circuits
+implemented here (qubits numbered 0, 1, 2 and 14) all have errors under 0.07\%.
+CNOT error between the four qubits of interest to our circuits stays below 4\%.
+When choosing which qubits to use for computation, the transpiling program
+seems to favour implementation on qubits with the lowest errors (hence the
+avoidance of the noisy qubit 13).
+
+The individual character of the qubits is most easily seen in the Melbourne
+device. Due to variability in the manufacture of the macroscopic qubits, some
+come out noisier than others, and the connections between them likewise suffer
+some in-homogeneity.
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_melbourne.png}
@@ -86,8 +97,11 @@ In Fig. \ref{fig:melbourne_connections},
   \label{fig:melbourne_connections}
 \end{figure}
 
-One consideration that is not reflected in the gate error rates which has a
-significant impact on the fidelity of circuit outputs 
+The final backend under consideration, shown in Fig.
+\ref{fig:yorktown_connections} comes out between Melbourne and Burlington with
+an average single-qubit error rate of 0.05\% and average CNOT error of 2.276\%.
+However, as we will see in the results, these gate error rates are far from the
+whole story when it comes to explaining the performance of various backends.
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_ibmqx2.png}
@@ -96,6 +110,32 @@ significant impact on the fidelity of circuit outputs
     of connectivity in a device. Figure from \cite{ibmq_yorktown}.}
   \label{fig:yorktown_connections}
 \end{figure}
+
+One consideration that is not reflected in the gate error rates which has a
+significant impact on the fidelity of the outputs of circuits is the number of direct
+connections between qubits. Burlington may have the lowest average error rates
+for gate operations of all the three devices (shown in Table
+\ref{tb:average_errors}), but as we will show, this doesn't translate to better
+output fidelities in every case. In fact, because the number of gates required
+to implement each circuit will vary from device to device, the optimal backend
+on which to conduct a given computation will ultimately depend more on the
+configuration of each backend, rather than gate errors.
+
+\begin{table} \centering
+  \begin{tabular}{lrrrr}
+    \toprule
+    Backend & $U_2 (\%)$ & $CNOT (\%)$ \\
+    \midrule
+    Burlington & 0.050 & 1.213 \\
+    Melbourne & 1.258 & 2.156 \\
+    Yorktown & 0.689 & 2.275 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Average percent error on single-qubit $U_2$ gates and CNOT gates for the
+    three devices used to implement the circuits of interest. All averages taken
+    from data provided at \cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}.}
+  \label{tb:average_errors}
+\end{table}
 
 %%% Local Variables:
 %%% mode: latex
