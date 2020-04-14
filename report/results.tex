@@ -66,10 +66,10 @@ This thing here is to test a full size picture don't delete.
   \label{fig:yorktown_connections}
 \end{figure*}
 
-
-\newpage
 \subsection{Entanglement Swapping}
-As for teleportation we first look at the main result of the entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. 
+As for entanglement swapping, we first look at the main result of the entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. The fidelity measurements are done with a random generated state and a $\ket{\Phi^+}$ Bell-state instead of the regular entanglement swapping circuit where we only swap Bell-states. Again we see that the simulation fidelities are 1 within statistical error, which means that the swapping of initial Bell-states are done correctly using tomography to construct the final state, and post-measurement selection to transform specified results to specific basis. As we expected fidelities from the noisy simulator are much better than results from all the devices. The main difference between teleportation is the fact that Burlington's performance is worse while the other devices give similar (or slightly worse) fidelities. We could predict this behavior since the circuit uses more qubits and hence the total error (due to operations and the qubits themselves) will be more significant. Also note that using the two-qubit state tomography method (see Theory) results in an overall improvement of the fidelity. From this calculation we can conclude that a significant part of the error is due to readout error. In order to have a more detailed insight into the readout error correction we look at the Pauli sets in Fig. \ref{fig:swap_paulis} to analyze the error calibration in different basis. For this result we looked the swapping process of two $\ket{\Phi^+}$ Bell-states. We conclude that the error correction is too insignificant to derive at th expected Pauli set results (even though there is a small improvement).  
+
+\newpage 
 
 \begin{figure}[h] \centering
 	\includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
@@ -79,8 +79,6 @@ As for teleportation we first look at the main result of the entanglement swappi
 	\label{fig:swap_histogram}
 \end{figure}
 
-In order to check the readout calibration, it is useful to compare Pauli sets of
-the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
 \begin{figure}
 	\begin{subfigure}{.5\textwidth} \centering % include first image
 		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_sim.png}
@@ -97,21 +95,12 @@ the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
 		\caption{The calibrated device Pauli set.}
 		\label{fig:swap_pauli_dev}
 	\end{subfigure}
-	\caption{The expectation values match those we expect after calibrating for
-		readout error. Errors in measurement contribute greatly to the low fidelity of
-		our final states. The type of correction seen in the figures above accounts for
+	\caption{ The type of correction seen in the figures above accounts for
 		the increased fidelity for the calibrated device in Fig.
 		\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the
 		Melbourne backend.}
-	\label{fig:tele_paulis}
+	\label{fig:swap_paulis}
 \end{figure}
-
-
-
-
-
-
-
 
 \subsection{Entanglement Purification}
 \subsection{Grover's Algorithm}
