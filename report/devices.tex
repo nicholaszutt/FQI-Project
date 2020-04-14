@@ -59,32 +59,42 @@ cities, and those we are interested in are code-named Burlington, Melbourne and
 Yorktown.
 
 \subsection{Burlington}
-
+When comparing the different backends, the first parameters to take into account
+in their characterization is the error rates for single- and two-qubit
+operations. All three backends use the same universal gate set, which make their
+error rates directly comparable. As can be seen in Fig.
+\ref{fig:burlington_connections}, this backend has the best gate error rates of
+any backend we will consider, with a single-qubit U2 error rate less than 0.065\%
+for all qubits and a CNOT error rate of less than 1.645\%. 
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_burlington.png}
-  \label{burlington_connections}
   \caption{The T-shaped Burlington device. Though a device with relatively small
     error rates, the limited connectivity play a big role in the device's
     performance, as many extra gates are needed to implement circuits when there
     are few direct connections. Figure from \cite{ibmq_burlington}.}
+  \label{fig:burlington_connections}
 \end{figure}
+
+In Fig. \ref{fig:melbourne_connections}, 
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_melbourne.png}
-  \label{melbourne_connections}
   \caption{The largest publicly available device at IBM Q. The individual
     character of the transmons is visible in this diagram through the large
     variability in the error rates. Figure from \cite{ibmq_16_melbourne}.}
+  \label{fig:melbourne_connections}
 \end{figure}
 
+One consideration that is not reflected in the gate error rates which has a
+significant impact on the fidelity of circuit outputs 
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/connection_diagram_ibmqx2.png}
-  \label{yorktown_connections}
   \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
     equally as important as the single-qubit and CNOT error rates is the degree
     of connectivity in a device. Figure from \cite{ibmq_yorktown}.}
+  \label{fig:yorktown_connections}
 \end{figure}
 
 %%% Local Variables:
