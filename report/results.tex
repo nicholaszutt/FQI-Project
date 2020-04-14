@@ -30,33 +30,31 @@ unity.}
 \end{figure}
 
 In order to check the readout calibration, it is useful to compare Pauli sets of
-the different outcomes. We can see in Fig. \ref{fig:tele_pauli_sim}
+the different outcomes. We can see in Fig. \ref{fig:tele_paulis}
 
 \begin{figure}
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    % include first image
-    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_sim.png}  
-    \caption{Put your sub-caption here}
+  \begin{subfigure}{.5\textwidth} \centering % include first image
+\includegraphics[width=.8\linewidth]{images/results/tele_pauli_sim.png}
+    \caption{The expected Pauli set.}
     \label{fig:tele_pauli_sim}
-  \end{subfigure}
-  \newline
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    % include second image
-    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_dev.png}  
-    \caption{Put your sub-caption here}
+  \end{subfigure} \newline
+  \begin{subfigure}{.5\textwidth} \centering % include second image
+\includegraphics[width=.8\linewidth]{images/results/tele_pauli_dev.png}
+    \caption{The output Pauli set for the device.}
+    \label{fig:tele_pauli_dev}
+  \end{subfigure} \newline
+  \begin{subfigure}{.5\textwidth} \centering % include second image
+\includegraphics[width=.8\linewidth]{images/results/tele_pauli_cal.png}
+    \caption{The calibrated device Pauli set.}
     \label{fig:tele_pauli_dev}
   \end{subfigure}
-  \newline
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    % include second image
-    \includegraphics[width=.8\linewidth]{images/results/tele_pauli_cal.png}  
-    \caption{Put your sub-caption here}
-    \label{fig:tele_pauli_dev}
-  \end{subfigure}
-  \caption{The Pauli set plots for teleportation. We find that}
+  \caption{The expectation values match those we expect after calibrating for
+readout error. Errors in measurement contribute greatly to the low fidelity of
+our final states. The type of correction seen in the figures above accounts for
+the increased fidelity for the calibrated device in Fig.
+\ref{fig:teleport_histogram}. Data plotted here is taken for 8192 shots on the
+Melbourne backend.}
+  \label{fig:tele_paulis}
 \end{figure}
 
 \subsection{Entanglement Swapping}
