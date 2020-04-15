@@ -13,13 +13,6 @@ model overestimate the performance of the backend, but interestingly in this
 case, for the Melbourne device, we find that the noise model almost matches that
 of the device.
 
-The noise model captures the error in the Burlington device much less
-accurately. We would expect that Burlington would perform almost as well as
-Yorktown from the estimates on the noisy simulator, but in fact it performs the
-worst of the three. We suspect, as will be described in more detail below, that
-this is a consequence of the number of gates needed to implement the circuit on
-the real device.
-
 \begin{figure}[h] \centering
 	\includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
 	\caption{Fidelity results for the Teleportation protocol. Error bars are
@@ -28,9 +21,18 @@ the real device.
 		unity.}
 	\label{fig:teleport_histogram}
 \end{figure}
+
+The noise model captures the error in the Burlington device much less
+accurately. We would expect that Burlington would perform almost as well as
+Yorktown from the estimates on the noisy simulator, but in fact it performs the
+worst of the three. We suspect, as will be described in more detail below, that
+this is a consequence of the number of gates needed to implement the circuit on
+the real device.
+
 In order to check the readout calibration, it is useful to compare Pauli sets of
 the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
-\begin{figure}
+
+\begin{figure}[h!]
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.8\linewidth]{images/results/tele_pauli_sim.png}
@@ -43,7 +45,8 @@ the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
     \includegraphics[width=.8\linewidth]{images/results/tele_pauli_dev.png}
     \caption{The output Pauli set for the device.}
     \label{fig:tele_pauli_dev}
-  \end{subfigure} \newline
+  \end{subfigure}
+  \newline
   \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=.8\linewidth]{images/results/tele_pauli_cal.png}
@@ -59,21 +62,46 @@ Melbourne backend.}
   \label{fig:tele_paulis}
 \end{figure}
 
-
-This thing here is to test a full size picture don't delete.
-\begin{figure*}
-  \centering
-  \includegraphics[width=\textwidth]{images/teleport_ibmqx2.png}
-  \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
-    equally as important as the single-qubit and CNOT error rates is the degree of
-    connectivity in a device. Figure from \cite{ibmq_yorktown}.}
-  \label{fig:yorktown_connections}
-\end{figure*}
+% This thing here is to test a full size picture don't delete.
+% \begin{figure*}
+%   \centering
+%   \includegraphics[width=\textwidth]{images/teleport_ibmqx2.png}
+%   \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
+%     equally as important as the single-qubit and CNOT error rates is the degree of
+%     connectivity in a device. Figure from \cite{ibmq_yorktown}.}
+%   \label{fig:yorktown_connections}
+% \end{figure*}
 
 \subsection{Entanglement Swapping}
-As for entanglement swapping, we first look at the main result of the entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. The fidelity measurements are done with a random generated state and a $\ket{\Phi^+}$ Bell-state instead of the regular entanglement swapping circuit where we only swap Bell-states. Again we see that the simulation fidelities are 1 within statistical error, which means that the swapping of initial Bell-states are done correctly using tomography to construct the final state, and post-measurement selection to transform specified results to specific basis. As we expected fidelities from the noisy simulator are much better than results from all the devices. The main difference between teleportation is the fact that Burlington's performance is worse while the other devices give similar (or slightly worse) fidelities. We could predict this behavior since the circuit uses more qubits and hence the total error (due to operations and the qubits themselves) will be more significant. Also note that using the two-qubit state tomography method (see section \ref{two-qubit} \nameref{two-qubit} of \nameref{theory}) results in an overall improvement of the fidelity. From this calculation we can conclude that a significant part of the error is due to readout error. In order to have a more detailed insight into the readout error correction we look at the Pauli sets in Fig. \ref{fig:swap_paulis} to analyze the error calibration in different basis. For this result we looked the swapping process of two $\ket{\Phi^+}$ Bell-states. We conclude that the error correction is too insignificant to derive at the expected Pauli set results (even though there is a small improvement).  
-\newpage
-Next we take a more in depth look into the different states by analyzing the density matrix plots, which are presented in Fig. \ref{fig:swap_density}. From these density plots we conclude that the device calibration improves the final state so that it closer represents the $\ket{\Phi^+}$ state.
+As for entanglement swapping, we first look at the main result of the
+entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. The fidelity
+measurements are done with a random generated state and a $\ket{\Phi^+}$
+Bell-state instead of the regular entanglement swapping circuit where we only
+swap Bell-states. Again we see that the simulation fidelities are 1 within
+statistical error, which means that the swapping of initial Bell-states are done
+correctly using tomography to construct the final state, and post-measurement
+selection to transform specified results to specific basis. As we expected
+fidelities from the noisy simulator are much better than results from all the
+devices. The main difference between teleportation is the fact that Burlington's
+performance is worse while the other devices give similar (or slightly worse)
+fidelities. We could predict this behavior since the circuit uses more qubits
+and hence the total error (due to operations and the qubits themselves) will be
+more significant. Also note that using the two-qubit state tomography method
+(see section \ref{two-qubit} of \nameref{theory}) results in
+an overall improvement of the fidelity. From this calculation we can conclude
+that a significant part of the error is due to readout error. In order to have a
+more detailed insight into the readout error correction we look at the Pauli
+sets in Fig. \ref{fig:swap_paulis} to analyze the error calibration in different
+basis. For this result we looked the swapping process of two $\ket{\Phi^+}$
+Bell-states. We conclude that the error correction is too insignificant to
+derive at the expected Pauli set results (even though there is a small
+improvement).
+
+\newpage Next we take a more in depth look into the different states by
+analyzing the density matrix plots, which are presented in Fig.
+\ref{fig:swap_density}. From these density plots we conclude that the device
+calibration improves the final state so that it closer represents the
+$\ket{\Phi^+}$ state.
 
 \begin{figure}[h] \centering
 	\includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
@@ -99,8 +127,11 @@ Next we take a more in depth look into the different states by analyzing the den
 		\caption{The calibrated device Pauli set.}
 		\label{fig:swap_pauli_dev}
 	\end{subfigure}
-	\caption{ Pauli set entanglement swapping results for the ideal simulator, the device and the calibrated device. The type of correction seen in the figures above accounts for the increased fidelity for the calibrated device in Fig.
-		\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the Melbourne backend.}
+	\caption{ Pauli set entanglement swapping results for the ideal simulator, the
+device and the calibrated device. The type of correction seen in the figures
+above accounts for the increased fidelity for the calibrated device in Fig.
+\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the
+Melbourne backend.}
 	\label{fig:swap_paulis}
 \end{figure}
 
@@ -120,7 +151,9 @@ Next we take a more in depth look into the different states by analyzing the den
 		\caption{The calibrated device Density matrix.}
 		\label{fig:swap_density_dev}
 	\end{subfigure}
-	\caption{ The entanglement swapping density matrices for the ideal simulator, the device and the calibrated device. Data plotted here is taken for 8192 shots on the Melbourne backend. }
+	\caption{ The entanglement swapping density matrices for the ideal simulator,
+the device and the calibrated device. Data plotted here is taken for 8192 shots
+on the Melbourne backend. }
 	\label{fig:swap_density}
 \end{figure}
 
