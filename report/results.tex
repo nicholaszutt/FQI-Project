@@ -6,35 +6,32 @@ consult the Appendices.
 
 \subsection{Teleportation}
 
-The main result of the teleportation protocol is
-summarized in Fig. \ref{fig:teleport_histogram}. The ideal simulation fidelities
-are all within statistical error of unity, an important check to ensure that the
-state, reconstructed through tomography, and post-measurement selection scheme
-both are working as expected. The Noisy Simulator is modelled using the
-single-qubit errors, CNOT errors and a model of readout error in each backend
-\cite{qiskit_org}. As we will continue to see with the other circuits, the noise
-model overestimate the performance of the backend, but interestingly in this
-case, for the Melbourne device, we find that the noise model almost matches that
-of the device.
+The main result of the teleportation protocol is summarized in Fig.
+\ref{fig:teleport_histogram}. The ideal simulation fidelities are all within
+statistical error of unity, an important check to ensure that the state,
+reconstructed through tomography and post-measurement selection scheme both are
+working as expected. The Noisy Simulator is modelled using the single-qubit
+errors, CNOT errors and a model of readout error with symmetric bit flip
+probabilities in each backend \cite{qiskit_org}. As we will continue to see with
+the other circuits, the noise model tends to overestimates the performance of
+the backend, but interestingly in this case, for the Melbourne device, we find
+that the noise model almost matches that of the device.
 
 \begin{figure}[h] \centering
 	\includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
-	\caption{Fidelity results for the Teleportation protocol. Error bars are
-		estimated by taking the variance over 15 runs of 8,192 shots each (a total of
-		122,880 shots). All simulation fidelities are within statistical error of
-		unity.}
+	\caption{Fidelity results for the Teleportation protocol. Error bars, showing
+one standard deviation, are estimated by taking the variance over 15 runs of
+8,192 shots each (a total of 122,880 shots). All simulation fidelities are
+within statistical error of unity.}
 	\label{fig:teleport_histogram}
 \end{figure}
 
 The noise model captures the error in the Burlington device much less
 accurately. We would expect that Burlington would perform almost as well as
 Yorktown from the estimates on the noisy simulator, but in fact it performs the
-worst of the three. We suspect, as will be described in more detail below, that
-this is a consequence of the number of gates needed to implement the circuit on
-the real device.
-
-In order to check the readout calibration, it is useful to compare Pauli sets of
-the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}.
+worst of the three. We suspect, as will be seen again below for the other
+circuits, that this is a consequence of the number of gates needed to implement
+the circuit on the real device.
 
 \begin{figure}[h!]
   \begin{subfigure}{.5\textwidth}
@@ -66,6 +63,16 @@ Melbourne backend.}
   \label{fig:tele_paulis}
 \end{figure}
 
+In order to check the readout calibration, it is useful to compare Pauli sets of
+the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These
+plots make the expectation values of the three measurement bases very visible,
+which eases the comparison of the results. Though not perfect, the output
+calibrated for readout error fits the expected state much better than the
+original device output. We can conclude from this that indeed, a large source of
+error in the system comes from measurement, and the state the circuit actually
+creates is much better than what we would naively assume through tomography
+alone!
+
 % This thing here is to test a full size picture don't delete.
 % \begin{figure*}
 %   \centering
@@ -78,11 +85,14 @@ Melbourne backend.}
 
 \subsection{Entanglement Swapping}
 
-As for entanglement swapping, we first look at the main result of the
-entanglement swapping circuit in Fig. \ref{fig:swap_histogram}. The fidelity
-measurements are done with a random generated state and a $\ket{\Phi^+}$
-Bell-state instead of the regular entanglement swapping circuit where we only
-swap Bell-states. 
+We now turn to Entanglement Swapping, a protocol largely similar to
+teleportation, in that it teleports one half of an entangled pair. The main
+result can be found in Fig. \ref{fig:swap_histogram}. The swapping protocol was
+implemented for initial states (that is, the top two qubits, the bottom two were
+always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
+instead states with some degree of entanglement. We felt this was important in
+order to probe our ability to reconstruct arbitrary states using tomography, and
+show that indeed the swapping protocol should work for any entangled pair.
 
 \begin{figure}[h]
   \centering
@@ -96,16 +106,9 @@ of 122,880 shots).}
 Again we see that the simulation fidelities are 1 within
 statistical error, which means that the swapping of initial Bell-states are done
 correctly using tomography to construct the final state, and post-measurement
-selection to transform specified results to specific basis. As we expected
+selection to transform specified results to specific basis. As we expected,
 fidelities from the noisy simulator are much better than results from all the
-devices. The main difference between teleportation is the fact that Burlington's
-performance is worse while the other devices give similar (or slightly worse)
-fidelities. We could predict this behavior since the circuit uses more qubits
-and hence the total error (due to operations and the qubits themselves) will be
-more significant. Also note that using the two-qubit state tomography method
-(see section \ref{two-qubit} of \nameref{theory}) results in
-an overall improvement of the fidelity. From this calculation we can conclude
-that a significant part of the error is due to readout error. 
+devices.
 
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth} \centering % include first image
@@ -131,14 +134,16 @@ that a significant part of the error is due to readout error.
 	\label{fig:swap_paulis}
 \end{figure}
 
-In order to have a more detailed insight into the readout error correction we
-look at the Pauli sets in Fig. \ref{fig:swap_paulis} to analyze the error
-calibration in different basis. For this result we looked the swapping process
-of two $\ket{\Phi^+}$ Bell-states. We conclude that the error correction is too
-insignificant to derive at the expected Pauli set results (even though there is
-a small improvement).
+Burlington's device performance is again much worse than would be
+expected from the noisy simulator results. We can appreciate this decline by
+comparing the number of gates needed to implement swap on Burlington to those
+numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
+implement the protocol on its T-shaped circuitry, the latter two require the
+minimum of just three. This has huge impact on the output, and places the
+backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
+when it comes to implementing swap. 
 
-\begin{figure}
+\begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
     \centering
 		\includegraphics[width=.8\linewidth]{images/results/swap_density_sim.png}
@@ -158,12 +163,24 @@ a small improvement).
 		\label{fig:swap_density_dev}
 	\end{subfigure}
 	\caption{ The entanglement swapping density matrices for the ideal simulator,
-the device and the calibrated device. Data plotted here is taken for 8192 shots
-on the Melbourne backend. }
+    the device and the calibrated device. Data plotted here is taken for 8192 shots
+    on the Melbourne backend. }
 	\label{fig:swap_density}
 \end{figure}
 
+In order to appreciate the effect of readout calibration on the output, we show,
+in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
+circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
+plots as it is particularly easy, with a Bell state, to know what it is we
+expect from the plots. We expect, of course, large values for the
+$\langle XX \rangle$, $\langle YY \rangle$, $\langle ZZ \rangle$, and otherwise
+very small values, as seen in Fig. \ref{fig:swap_pauli_sim}. The readout
+calibration does a decent job of boosting the like-like correlations, as can
+also be seen from Fig. \ref{fig:swap_density}.
+
 \subsection{Entanglement Purification}
+
+
 \subsection{Grover's Algorithm}
 
 
