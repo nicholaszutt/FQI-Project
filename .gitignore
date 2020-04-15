@@ -165,3 +165,7 @@ auto/
 *.synctex.gz
 *.pdf
 *.fmt
+Circuits/Grover.ipynb
+Circuits/Swap.ipynb
+Circuits/Swap.ipynb
+*.ipynb
