@@ -56,11 +56,11 @@ will be discussed below. IBM names its superconducting devices after major
 cities, and those we are interested in are code-named Burlington, Melbourne and
 Yorktown.
 
-\subsection{Burlington} When comparing the different backends, the first
+\subsection{Specifications}\label{Specifications} When comparing the different backends, the first
 parameters to take into account in their characterization is the error rates for
 single- and two-qubit operations. All three backends use the same universal gate
 set, which make their error rates directly comparable. As can be seen in Fig.
-\ref{fig:burlington_connections}, this backend has the best gate error rates of
+\ref{fig:burlington_connections}, the Burlington backend has the best gate error rates of
 any backend we will consider, with a single-qubit U2 error rate less than
 0.065\% for all qubits and a CNOT error rate of less than 1.645\%.
 
@@ -124,7 +124,7 @@ rates for gate operations of all the three devices (shown in Table
 output fidelities in every case. In fact, because the number of gates required
 to implement each circuit will vary from device to device, the optimal backend
 on which to conduct a given computation will ultimately depend more on the
-configuration of each backend, rather than gate errors.
+configuration of each backend, rather than gate errors. This seems to contradict the specifications of the backends, since Burlington has the best gate error rate. As mentioned in 
 
 %%% Local Variables:
 %%% mode: latex
