@@ -31,7 +31,6 @@ Yorktown from the estimates on the noisy simulator, but in fact it performs the
 worst of the three. We suspect, as will be seen again below for the other
 circuits, that this is a consequence of the number of gates needed to implement
 the circuit on the real device.
-
 \begin{figure}[h!]
   \begin{subfigure}{.5\textwidth}
     \centering
@@ -61,7 +60,6 @@ the increased fidelity for the calibrated device in Fig.
 Melbourne backend.}
   \label{fig:tele_paulis}
 \end{figure}
-
 In order to check the readout calibration, it is useful to compare Pauli sets of
 the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These
 plots make the expectation values of the three measurement bases very visible,
@@ -92,7 +90,6 @@ always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
 instead states with some degree of entanglement. We felt this was important in
 order to probe our ability to reconstruct arbitrary states using tomography, and
 show that indeed the swapping protocol should work for any entangled pair.
-
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
@@ -102,12 +99,20 @@ of 122,880 shots).}
 	\label{fig:swap_histogram}
 \end{figure}
 
+\newpage
 Again we see that the simulation fidelities are 1 within
 statistical error, which means that the swapping of initial Bell-states are done
 correctly using tomography to construct the final state, and post-measurement
 selection to transform specified results to specific basis. As we expected,
 fidelities from the noisy simulator are much better than results from all the
-devices.
+devices. Burlington's device performance is again much worse than would be
+expected from the noisy simulator results. We can appreciate this decline by
+comparing the number of gates needed to implement swap on Burlington to those
+numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
+implement the protocol on its T-shaped circuitry, the latter two require the
+minimum of just three. This has huge impact on the output, and places the
+backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
+when it comes to implementing swap.
 
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth} \centering % include first image
@@ -131,15 +136,7 @@ devices.
 		\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the
 		Melbourne backend.}
 	\label{fig:swap_paulis}
-\end{figure}
-Burlington's device performance is again much worse than would be
-expected from the noisy simulator results. We can appreciate this decline by
-comparing the number of gates needed to implement swap on Burlington to those
-numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
-implement the protocol on its T-shaped circuitry, the latter two require the
-minimum of just three. This has huge impact on the output, and places the
-backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
-when it comes to implementing swap. 
+\end{figure} 
 
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
@@ -175,7 +172,7 @@ $\langle XX \rangle$, $\langle YY \rangle$, $\langle ZZ \rangle$, and otherwise
 very small values, as seen in Fig. \ref{fig:swap_pauli_sim}. The readout
 calibration does a decent job of boosting the like-like correlations, as can
 also be seen from Fig. \ref{fig:swap_density}.
-
+\newpage
 \subsection{Entanglement Purification}
 
 
