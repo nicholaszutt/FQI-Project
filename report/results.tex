@@ -17,7 +17,7 @@ the other circuits, the noise model tends to overestimates the performance of
 the backend, but interestingly in this case, for the Melbourne device, we find
 that the noise model almost matches that of the device.
 
-\begin{figure}[h] \centering
+\begin{figure}[h!] \centering
 	\includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
 	\caption{Fidelity results for the Teleportation protocol. Error bars, showing
 one standard deviation, are estimated by taking the variance over 15 runs of
@@ -25,7 +25,6 @@ one standard deviation, are estimated by taking the variance over 15 runs of
 within statistical error of unity.}
 	\label{fig:teleport_histogram}
 \end{figure}
-
 The noise model captures the error in the Burlington device much less
 accurately. We would expect that Burlington would perform almost as well as
 Yorktown from the estimates on the noisy simulator, but in fact it performs the
@@ -94,7 +93,7 @@ instead states with some degree of entanglement. We felt this was important in
 order to probe our ability to reconstruct arbitrary states using tomography, and
 show that indeed the swapping protocol should work for any entangled pair.
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
   \includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
 	\caption{Fidelity results for the Entanglement Swapping protocol. Error bars
@@ -133,7 +132,7 @@ devices.
 		Melbourne backend.}
 	\label{fig:swap_paulis}
 \end{figure}
-
+\newpage
 Burlington's device performance is again much worse than would be
 expected from the noisy simulator results. We can appreciate this decline by
 comparing the number of gates needed to implement swap on Burlington to those
