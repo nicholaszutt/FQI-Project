@@ -184,7 +184,7 @@ circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
 plots as it is particularly easy, with a Bell state, to know what it is we
 expect from the plots. We expect, of course, large values for the
 $\langle XX \rangle$, $\langle YY \rangle$, $\langle ZZ \rangle$, and otherwise
-very small values, as seen in Fig. \ref{fig:swap_pauli_sim}.\newpage The readout
+very small values, as seen in Fig. \ref{fig:swap_pauli_sim}. The readout
 calibration does a decent job of boosting the like-like correlations, as can
 also be seen from Fig. \ref{fig:swap_density}.
 
@@ -207,9 +207,17 @@ out of the 122,880 shots we perform, only an average of 960 will be successful.
 	\caption{Fidelity results for the Purification protocol. Error bars are
     estimated taking the variance over 15 runs, where an average of 960 shots
     per run yield the desired entangled state.}
-	\label{fig:swap_histogram}
+	\label{fig:purification_histogram}
 \end{figure}
 
+The poorer performance of the Burlington device (as compared to Yorktown) evidenced in Fig.
+\ref{fig:purification_histogram} can be explained by the fact that, again, twice
+as many CNOT gates are required for Burlington (15) than for either Melbourne or
+Yorktown (7 each). What is harder to explain is Melbourne's extremely poor
+performance. The circuit is implemented on qubits 0, 1, 2 and 14 on Melbourne,
+so the especially noisy qubit 13 is left out of the system. Our current
+understanding of the connections and gate fidelities for these backends does not
+present an immediate explanation for this large dip in the Melbourne fidelities. 
 
 \subsection{Grover's Algorithm}
 
