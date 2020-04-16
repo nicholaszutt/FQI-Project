@@ -64,6 +64,15 @@ worst of the three. We suspect, as will be seen again below for the other
 circuits, that this is a consequence of the number of gates needed to implement
 the circuit on the real device.
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
+	\caption{Fidelity results for the Entanglement Swapping protocol. Error bars
+    are estimated by taking the variance over 15 runs of 8,192 shots each (a total
+    of 122,880 shots).}
+	\label{fig:swap_histogram}
+\end{figure}
+
 In order to check the readout calibration, it is useful to compare Pauli sets of
 the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These
 plots make the expectation values of the three measurement bases very visible,
@@ -87,39 +96,6 @@ alone!
 \subsection{Entanglement Swapping}
 
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
-	\caption{Fidelity results for the Entanglement Swapping protocol. Error bars
-    are estimated by taking the variance over 15 runs of 8,192 shots each (a total
-    of 122,880 shots).}
-	\label{fig:swap_histogram}
-\end{figure}
-
-We now turn to Entanglement Swapping, a protocol largely similar to
-teleportation, in that it teleports one half of an entangled pair. The main
-result can be found in Fig. \ref{fig:swap_histogram}. The swapping protocol was
-implemented for initial states (that is, the top two qubits, the bottom two were
-always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
-instead states with some degree of entanglement. We felt this was important in
-order to probe our ability to reconstruct arbitrary states using tomography, and
-show that indeed the swapping protocol should work for any entangled pair.
-
-
-Again we see that the simulation fidelities are 1 within
-statistical error, which means that the swapping of initial Bell-states are done
-correctly using tomography to construct the final state, and post-measurement
-selection to transform specified results to specific basis. As we expected,
-fidelities from the noisy simulator are much better than results from all the
-devices. Burlington's device performance is again much worse than would be
-expected from the noisy simulator results. We can appreciate this decline by
-comparing the number of gates needed to implement swap on Burlington to those
-numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
-implement the protocol on its T-shaped circuitry, the latter two require the
-minimum of just three. This has huge impact on the output, and places the
-backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
-when it comes to implementing swap.
-
-\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth} \centering % include first image
 		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_sim.png}
 		\caption{The expected Pauli set.}
@@ -135,13 +111,22 @@ when it comes to implementing swap.
 		\caption{The calibrated device Pauli set.}
 		\label{fig:swap_pauli_dev}
 	\end{subfigure}
-	\caption{ Pauli set entanglement swapping results for the ideal simulator, the
+	\caption{Pauli set entanglement swapping results for the ideal simulator, the
 		device and the calibrated device. The type of correction seen in the figures
 		above accounts for the increased fidelity for the calibrated device in Fig.
 		\ref{fig:swap_histogram}. Data plotted here is taken for 8192 shots on the
 		Melbourne backend.}
 	\label{fig:swap_paulis}
 \end{figure} 
+
+We now turn to Entanglement Swapping, a protocol largely similar to
+teleportation, in that it teleports one half of an entangled pair. The main
+result can be found in Fig. \ref{fig:swap_histogram}. The swapping protocol was
+implemented for initial states (that is, the top two qubits, the bottom two were
+always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
+instead states with some degree of entanglement. We felt this was important in
+order to probe our ability to reconstruct arbitrary states using tomography, and
+show that indeed the swapping protocol should work for any entangled pair.
 
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
@@ -162,11 +147,25 @@ when it comes to implementing swap.
 		\caption{The calibrated device Density matrix.}
 		\label{fig:swap_density_dev}
 	\end{subfigure}
-	\caption{ The entanglement swapping density matrices for the ideal simulator,
-the device and the calibrated device. Data plotted here is taken for 8192 shots
-on the Melbourne backend. }
+	\caption{The entanglement swapping density matrices for the ideal simulator,
+    the device and the calibrated device. Data plotted here is taken for 8192 shots
+    on the Melbourne backend. }
 	\label{fig:swap_density}
 \end{figure}
+
+Again we see that the simulation fidelities are 1 within
+statistical error, which means that the swapping of initial Bell-states are done
+correctly using tomography to construct the final state, and post-measurement
+selection to transform specified results to specific basis. As we expected,
+fidelities from the noisy simulator are much better than results from all the
+devices. Burlington's device performance is again much worse than would be
+expected from the noisy simulator results. We can appreciate this decline by
+comparing the number of gates needed to implement swap on Burlington to those
+numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
+implement the protocol on its T-shaped circuitry, the latter two require the
+minimum of just three. This has huge impact on the output, and places the
+backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
+when it comes to implementing swap.
 
 In order to appreciate the effect of readout calibration on the output, we show,
 in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
@@ -179,6 +178,16 @@ calibration does a decent job of boosting the like-like correlations, as can
 also be seen from Fig. \ref{fig:swap_density}.
 
 \subsection{Entanglement Purification}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.48\textwidth]{images/results/purification_histogram.pdf}
+	\caption{Fidelity results for the Purification protocol. Error bars are
+    estimated taking the variance over 15 runs, where an average of 960 shots
+    per run yield the desired entangled state.}
+	\label{fig:purification_histogram}
+\end{figure}
+
 Now we will turn our attention to the Purification protocol, a circuit of great
 use in quantum communication as noisy, imperfect entanglement can be improved on
 through sifting the outcomes of measurements on a subset of received entangled
@@ -191,13 +200,29 @@ a mere 0.781\% of the time (in other words, the circuit fails to leave the
 unmeasured qubits in a better entangled state 99.22\% of the time!). This means,
 out of the 122,880 shots we perform, only an average of 960 will be successful.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.48\textwidth]{images/results/purification_histogram.pdf}
-	\caption{Fidelity results for the Purification protocol. Error bars are
-    estimated taking the variance over 15 runs, where an average of 960 shots
-    per run yield the desired entangled state.}
-	\label{fig:purification_histogram}
+\begin{figure}[h]
+	\begin{subfigure}{.5\textwidth}
+    \centering
+		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_sim.png}
+		\caption{The expected Pauli set.}
+		\label{fig:pur_pauli_sim}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+    \centering
+		\includegraphics[width=.8\linewidth]{images/results/pur_pauli_dev.png}
+		\caption{The output Pauli set for the device.}
+		\label{fig:pur_pauli_dev}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+    \centering
+		\includegraphics[width=.8\linewidth]{images/results/pur_pauli_cal.png}
+		\caption{The calibrated device Pauli set.}
+		\label{fig:pur_pauli_cal}
+	\end{subfigure}
+	\caption{The Pauli sets for the expected state and the output of the raw and
+    calibrated device. Data here are taken from the Yorktown device, with an
+    average of 960 shots (0.78\% of 122,880).}
+	\label{fig:purification_paulis}
 \end{figure}
 
 The poorer performance of the Burlington device (as compared to Yorktown)
@@ -214,7 +239,8 @@ incapable of capturing the error in Melbourne, given the large discrepancy
 between the device and noisy simulator results.
 
 As with the other circuits, we can compare the Pauli sets of the expected state
-with the raw and calibrated outputs of the device.
+with the raw and calibrated outputs of the device. The result is shown in Fig.
+\ref{fig:purification_paulis}.
 
 \subsection{Grover's Algorithm}
 
