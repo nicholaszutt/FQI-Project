@@ -270,6 +270,32 @@ Lastely, we will turn to Grover's algorithm, a protocol which can find a black b
 \end{figure}
 We can see that the simulation fidelities are 1, which is expected. The noisy simulator see to correspond well to the device and calibrated fidelities for Yorktown and Melbourne. These devices both show a similar (within statistical error) fidelity for the device and calibrated measurements. Again, the poor performance of Burlington can be easily seen. By comparison to the Yorktown and Melbourne fidelities, the Burlington fidelity is off by about 0.2. Also, the results show that a significant error is present in the measurement readout for Burlington. This can be seen by the increase after the correction. Where Yorktown and Melbourne fidelities increase by about 0.05, Burlington's fidelity increases by about 0.15. As the number of gates for each device is the same, the difference in fidelity is likely accounted to gate and measurement error. With Burlington having the lowest percentage in gate error, the measurement error of the device will probably be significant for Grover's algorithm.
 
+Again, we can show the power of the measurement error correction in figure \ref{fig:grover_paulis}.
+\begin{figure}[h!]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_pauli_sim.png}
+		\caption{The expected Pauli set.}
+		\label{fig:grov_pauli_sim}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_pauli_dev.png}
+		\caption{The output Pauli set for the device.}
+		\label{fig:grov_pauli_dev}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_pauli_cal.png}
+		\caption{The calibrated device Pauli set.}
+		\label{fig:grov_pauli_cal}
+	\end{subfigure}
+	\caption{The Pauli sets for Grover's algorithm, for the expected state and the output of the raw and
+		calibrated device, for the -1 on the fourth position in $U$.  Data here are taken from the Burlington device.}
+	\label{fig:grover_paulis}
+\end{figure}
+The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from figure \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations.
+
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "report"
