@@ -1,4 +1,5 @@
 \section{Quantum Circuits}
+\label{sec:circuits}
 For this research we have chosen to execute the Teleportation protocol, Grover's
 search algorithm, Entanglement Swapping and Entanglement Purification on the
 devices. The circuits are all made using an open source software development kit
@@ -94,11 +95,15 @@ This protocol is, as the name states, a way of changing the entanglement between
 	\caption{General entanglement swap protocol circuit. Made using the IBM Quantum experience Circuit Composer.}
 	\label{fig:swapgen}
 \end{figure}
+
 First, an arbitrary Bell-like state is created on the first two qubits (q[0] and q[1]). For explanatory reasons, this is now a simple $\ket{\Phi^+}$ Bell state. On the third and fourth qubit, a $\ket{\Phi^+}$ state is also created. This gives the following state: $\ket{\Psi} = \frac{1}{2}\left(\ket{0000}+\ket{0011}+\ket{1100}+\ket{1111}\right)$. So at this point our arbitrary state has entanglement with the first and second qubit, which are the fourth and third number in de bra-ket notation, respectively. Now, a CNOT gate is applied between the second and third qubit resulting in: $\ket{\Psi} = \frac{1}{2}\left(\ket{0000}+\ket{0111}+\ket{1100}+\ket{1011}\right)$. After the application of the Hadamard gate to the second qubit we get eight different possible states: 
 %Did something weird with the equation here or else it wouldn't fit in the text
 $\ket{\Psi} = \frac{1}{\sqrt{8}}(\ket{0000}+\ket{0010}+\ket{0101}-\ket{0111}+\ket{1001}$$-\ket{1011}+\ket{1100}+\ket{1110})$. Now for the measurement part. If the result would be $M_1 = -1$ and $M_2 = +1$, a X-gate is applied to the fourth qubit. This would result in: $\ket{\Psi} = \frac{1}{\sqrt{2}}\left(\ket{0100}+\ket{1101}\right)$. One can see that the first and fourth qubit now have the combined state $\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right) = \ket{\Phi^+}$, so the entanglement is swapped from the first and the second to the first and the fourth qubit.
 
-However, we have to resort to post measurement techniques. Already stated in the section \ref{sub:tele}.\nameref{sub:tele}, gates cannot be applied after measurement. The circuit that is given to the devices and simulators is shown in figure \ref{fig:swapcir}.
+However, we have to resort to post measurement techniques. Already stated in the
+Section \ref{sec:circuits}.\ref{sub:tele}, gates cannot be applied after
+measurement. The circuit that is given to the devices and simulators is shown in
+figure \ref{fig:swapcir}.
 \begin{figure}[h]
 	\includegraphics[width=0.48\textwidth]{images/swap_circuit.png}
 	\caption{Entanglement swap circuit used in the measurements. Every measurement a random Bell-like state is created on the first two qubits.}
