@@ -3,9 +3,6 @@
 In the following sections we will discuss some key results;
 for a more complete look at the output of the scripts, we ask that you please
 consult the Appendices.
-
-\subsection{Teleportation}
-
 \begin{figure}[h!] \centering \includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
 	\caption{Fidelity results for the Teleportation protocol. Error bars, showing
     one standard deviation, are estimated by taking the variance over 15 runs of
@@ -13,6 +10,7 @@ consult the Appendices.
     within statistical error of unity.}
 	\label{fig:teleport_histogram}
 \end{figure}
+\subsection{Teleportation}
 
 The main result of the teleportation protocol is summarized in Fig.
 \ref{fig:teleport_histogram}. The ideal simulation fidelities are all within
@@ -172,12 +170,14 @@ In order to appreciate the effect of readout calibration on the output, we show,
 in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
 circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
 plots as it is particularly easy, with a Bell state, to know what it is we
-expect from the plots. We expect, of course, large values for the
+expect from the plots. 
+\newpage
+We expect, of course, large values for the
 $\langle XX \rangle$, $\langle YY \rangle$, $\langle ZZ \rangle$, and otherwise
 very small values, as seen in Fig. \ref{fig:swap_pauli_sim}. The readout
 calibration does a decent job of boosting the like-like correlations, as can
 also be seen from Fig. \ref{fig:swap_density}.
-
+\newpage
 \subsection{Entanglement Purification}
 Now we will turn our attention to the Purification protocol, a circuit of great
 use in quantum communication as noisy, imperfect entanglement can be improved on
