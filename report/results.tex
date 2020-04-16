@@ -2,7 +2,10 @@
 
 In the following sections we will discuss some key results;
 for a more complete look at the output of the scripts, we ask that you please
-consult the Appendices.
+consult the \hyperref[apen]{Appendices}.
+
+\subsection{Teleportation}
+
 \begin{figure}[h!] \centering \includegraphics[width=0.48\textwidth]{images/results/teleport_histogram.pdf}
 	\caption{Fidelity results for the Teleportation protocol. Error bars, showing
     one standard deviation, are estimated by taking the variance over 15 runs of
@@ -10,7 +13,6 @@ consult the Appendices.
     within statistical error of unity.}
 	\label{fig:teleport_histogram}
 \end{figure}
-\subsection{Teleportation}
 
 The main result of the teleportation protocol is summarized in Fig.
 \ref{fig:teleport_histogram}. The ideal simulation fidelities are all within
@@ -196,9 +198,8 @@ protocol relies on choosing the right outcomes (i.e. measuring the $\ket{11}$
 state on the two measured qubits), which has a certain probability that depends
 on the input fidelity of the entangled pairs. In the case where the input
 fidelity to $\ket{\Phi^+}$ is 0.75, we expect the successful measurement outcome
-a mere 0.781\% of the time (in other words, the circuit fails to leave the
-unmeasured qubits in a better entangled state 99.22\% of the time!). This means,
-out of the 122,880 shots we perform, only an average of 960 will be successful.
+a mere 12.5\% of the time. This means, out of the 122,880 shots we perform, only
+an average of 15,360 will be successful.
 
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
@@ -221,7 +222,7 @@ out of the 122,880 shots we perform, only an average of 960 will be successful.
 	\end{subfigure}
 	\caption{The Pauli sets for the expected state and the output of the raw and
     calibrated device. Data here are taken from the Burlington device, with an
-    average of 960 shots (0.78\% of 122,880).}
+    average of 15,360 shots (12.5\% of 122,880).}
 	\label{fig:purification_paulis}
 \end{figure}
 

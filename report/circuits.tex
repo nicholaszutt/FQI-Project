@@ -1,12 +1,14 @@
 \section{Quantum Circuits}
 \label{sec:circuits}
+
 For this research we have chosen to execute the Teleportation protocol, Grover's
 search algorithm, Entanglement Swapping and Entanglement Purification on the
 devices. The circuits are all made using an open source software development kit
 called Qiskit, which uses Python as its main programming language. The written
-codes, made with Jupyter Notebook, for the circuits can be found in the \hyperref[apen]{appendix}. In the following we will describe the circuits,
-mainly focussing on the states and the measurements.
-Thereafter, a summary of the execution of a code will be given.
+codes, made with Jupyter Notebook, for the circuits can be found in the
+\hyperref[apen]{Appendices}. In the following we will describe the circuits,
+mainly focussing on the states and the measurements. Thereafter, a summary of
+the execution of a code will be given.
 
 \subsection{The Teleportation protocol}
 \label{sub:tele}
@@ -89,6 +91,7 @@ is positioned and in this case the result shows it is in the bottom right corner
 
 \subsection{Entanglement swap}
 This protocol is, as the name states, a way of changing the entanglement between two qubits, for example the first and second, to an entanglement between different qubits, for example the first and fourth. This circuit will first be generally described, and can be found in figure \ref{fig:swapgen}.
+
 \begin{figure}[h]
 	\includegraphics[width=0.48\textwidth]{images/swap_general.png}
 	\caption{General entanglement swap protocol circuit. Made using the IBM Quantum experience Circuit Composer.}
