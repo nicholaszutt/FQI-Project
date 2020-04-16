@@ -210,14 +210,21 @@ out of the 122,880 shots we perform, only an average of 960 will be successful.
 	\label{fig:purification_histogram}
 \end{figure}
 
-The poorer performance of the Burlington device (as compared to Yorktown) evidenced in Fig.
-\ref{fig:purification_histogram} can be explained by the fact that, again, twice
-as many CNOT gates are required for Burlington (15) than for either Melbourne or
-Yorktown (7 each). What is harder to explain is Melbourne's extremely poor
-performance. The circuit is implemented on qubits 0, 1, 2 and 14 on Melbourne,
-so the especially noisy qubit 13 is left out of the system. Our current
-understanding of the connections and gate fidelities for these backends does not
-present an immediate explanation for this large dip in the Melbourne fidelities. 
+The poorer performance of the Burlington device (as compared to Yorktown)
+evidenced in Fig. \ref{fig:purification_histogram} can be explained by the fact
+that, again, twice as many CNOT gates are required for Burlington (15) than for
+either Melbourne or Yorktown (7 each). What is harder to explain is Melbourne's
+extremely poor performance. The circuit is implemented on qubits 0, 1, 2 and 14
+on Melbourne, so the especially noisy qubit 13 is left out of the system. Our
+current understanding of the connections and gate fidelities for these backends
+does not present an immediate explanation for this large dip in the Melbourne
+fidelities. Further work would be required to understand where exactly the error
+is coming from. It seems clear that the Noisy Simulator model is likewise
+incapable of capturing the error in Melbourne, given the large discrepancy
+between the device and noisy simulator results.
+
+As with the other circuits, we can compare the Pauli sets of the expected state
+with the raw and calibrated outputs of the device.
 
 \subsection{Grover's Algorithm}
 
