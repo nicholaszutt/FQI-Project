@@ -1,6 +1,9 @@
 \section{Theory}
 \label{theory}
-\subsection{One-Qubit State Tomography} In a classical computer the internal
+
+\subsection{One-Qubit State Tomography}
+
+In a classical computer the internal
 state is measured at different points in time in order to read data, debug the
 system, or do computation. Since measurement in quantum mechanics destroys the
 state being measured, though, we cannot simply measure a quantum state once and
@@ -12,12 +15,16 @@ initial state's density matrix and thus find out what state was realized
 collapsed to \textit{after} the measurement.
 We first define the density matrix of a single
 qubit,
-\begin{equation} \rho=\frac{1}{2}\left(\mathbb{1}+\sum_{i=1}^3\alpha_i\sigma_i\right)
+
+\begin{equation}
+  \rho=\frac{1}{2}\left(\mathbb{1}+\sum_{i=1}^3\alpha_i\sigma_i\right)
 \end{equation}
-where $\mathbb{1}$ is the 2-D identity matrix, $\sigma_i$ are all the Pauli-matrices and $\alpha_i$ are
-real-valued coefficients \cite{nielsen10_quant}. Using the trace orthogonality of the
-Pauli-matrices (because the trace of an operator gives the average value of the
-observable),
+
+where $\mathbb{1}$ is the 2-D identity matrix, $\sigma_i$ are all the
+Pauli-matrices and $\alpha_i$ are real-valued coefficients
+\cite{nielsen10_quant}. Using the trace orthogonality of the Pauli-matrices
+(because the trace of an operator gives the average value of the observable),
+
 \begin{equation} \Tr\left(\sigma_j\sigma_k\right)=2\delta_{jk}
 \end{equation}
 we can derive the real-valued coefficients by calculating the
@@ -25,49 +32,55 @@ expectation values of the different Pauli-matrices.
 \begin{equation}
 \Tr\left(\rho\sigma_i\right)=\left\langle\sigma_i\right\rangle=\alpha_i
 \end{equation}
-By measuring the single qubit in the different bases ($X$, $Y$ and
-$Z$) we can derive these expectation values. This requires a repeated
+By measuring the single qubit in the different bases ($X$, $Y$ and $Z$) we can
+derive these expectation values\cite{nielsen10_quant}. This requires a repeated
 preparation and measuring of the final state, and in the limit of a large sample
-size this reconstructed density matrix approaches the state's density matrix $\rho_s$. In reality, the measured
-expectation values are estimations of $\langle \hat{X}\rangle$,
-$\langle \hat{Y}\rangle$, $\left\langle \hat{Z}\right\rangle$. Often,
-as in this case,
-in a quantum computer the measurements are only done in the $Z$-basis. Other
-operators are realized using rotation operators before the final measurement.
+size this reconstructed density matrix approaches the state's density matrix
+$\rho_s$. In reality, the measured expectation values are estimations of
+$\langle \hat{X}\rangle$, $\langle \hat{Y}\rangle$, $\left\langle
+\hat{Z}\right\rangle$. Often, as in this case, in a quantum computer the
+measurements are only done in the $Z$-basis. Other operators are realized using
+rotation operators before the final measurement.
 
 We wish to characterize the fidelity of the circuits without including the error
-that results from measurements. Therefore, in order to convert these expectation values we correct for
-readout error, which will give us a better estimation of the density matrix
-$\rho_s$. If $\epsilon_{10}$, $\epsilon_{01}$ are the probabilities that a
-$\ket{0}$ state returns an eigenvalue of -1 and a
-$\ket{1}$ state returns an eigenvalue of 1 respectively (note that this
-is not a quantum effect but classical error), and if $\alpha$, $\beta$ are
-coefficients of the final state $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$,
-then the measured expectation value $\overline{m}$ in the $Z$-basis is
+that results from measurements. Therefore, in order to convert these expectation
+values we correct for readout error, which will give us a better estimation of
+the density matrix $\rho_s$. If $\epsilon_{10}$, $\epsilon_{01}$ are the
+probabilities that a $\ket{0}$ state returns an eigenvalue of -1 and a $\ket{1}$
+state returns an eigenvalue of 1 respectively (note that this is not a quantum
+effect but classical error), and if $\alpha$, $\beta$ are coefficients of the
+final state $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, then the measured
+expectation value $\overline{m}$ in the $Z$-basis is
+
 \begin{equation*}
-\begin{split}
-  \overline{m} &=\left(1-\epsilon_{10}\right)\left|\alpha\right|^2+\epsilon_{01}\left|\beta\right|^2\\
+\begin{split} \overline{m}
+&=\left(1-\epsilon_{10}\right)\left|\alpha\right|^2+\epsilon_{01}\left|\beta\right|^2\\
 &-\left(1-\epsilon_{01}\right)\left|\beta\right|^2
 -\epsilon_{10}\left|\alpha\right|^2\\
 &=\left(\epsilon_{01}-\epsilon_{10}\right)+\left(1-\epsilon_{01}-\epsilon_{10}\right)\left(\left|\alpha\right|^2-\left|\beta\right|^2\right)\\
 \end{split}
 \end{equation*}
+
 Using the last line we can define the parameters $\beta_0$ and $\beta_1$,
+
 \begin{equation}
   \begin{split}
    \overline{m}_Z =\beta_0+\beta_1\left\langle \hat{Z}\right\rangle
 \end{split}
 \end{equation}
-From error measurements $\beta_0$ and $\beta_1$ are derived by
-measuring different states on all relevant qubits. These estimates of $\beta_0$
-and $\beta_1$ are accurate because we know that the initialization of the states created for the readout error
-measurements has a very high fidelity (99\% accurate) and the gates used to create the
-final state measurements (in the case of $\langle \hat{X}\rangle$,
-$\langle \hat{Y}\rangle$) are almost perfect (fidelities exceeding
+
+From error measurements $\beta_0$ and $\beta_1$ are derived by measuring
+different states on all relevant qubits. These estimates of $\beta_0$ and
+$\beta_1$ are accurate because we know that the initialization of the states
+created for the readout error measurements has a very high fidelity (99\%
+accurate) and the gates used to create the final state measurements (in the case
+of $\langle \hat{X}\rangle$, $\langle \hat{Y}\rangle$) are almost perfect
+(fidelities exceeding
 99.9\%)\cite{ibmq_burlington,ibmq_16_melbourne,ibmq_yorktown}. From this
-expression, $\langle \hat{Z}\rangle$ and the other expectation values
-$\langle \hat{\sigma}_i\rangle$ are derived from all the different
-measurements $\overline{m}_i$ \cite{QuantumStateTomography}.
+expression, $\langle \hat{Z}\rangle$ and the other expectation values $\langle
+\hat{\sigma}_i\rangle$ are derived from all the different measurements
+$\overline{m}_i$ \cite{QuantumStateTomography}.
+
 \begin{equation}
 \begin{split} \left\langle
 \hat{\sigma}_i\right\rangle=\frac{\overline{m}_i-\beta_0}{\beta_1}
