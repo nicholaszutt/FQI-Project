@@ -294,7 +294,32 @@ Again, we can show the power of the measurement error correction in figure \ref{
 		calibrated device, for the -1 on the fourth position in $U$.  Data here are taken from the Burlington device.}
 	\label{fig:grover_paulis}
 \end{figure}
-The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from figure \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations.
+The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from figure \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations. This can also be visualized using the density matrices shown in figure \ref{fig:grov_density}.
+\begin{figure}[h]
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_density_sim.png}
+		\caption{The expected Density matrix.}
+		\label{fig:grov_density_sim}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_density_dev.png}
+		\caption{The output Density matrix for the device.}
+		\label{fig:grov_density_dev}
+	\end{subfigure} \newline
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{images/results/grov_density_cal.png}
+		\caption{The calibrated device Density matrix.}
+		\label{fig:grov_density_cal}
+	\end{subfigure}
+	\caption{The entanglement swapping density matrices for the ideal simulator,
+		the device and the calibrated device, taken from Grover's algorithm. Data plotted here is taken for 8192 shots
+		on the Burlington backend. }
+	\label{fig:grov_density}
+\end{figure}
+Upon comparing figure \ref{fig:grov_density_dev} to \ref{fig:grov_density_cal}, we can clearly see the non relevant states, for example the 01 and 10 states, disappear from the (real part of the) density matrix.
 
 %%% Local Variables:
 %%% mode: latex
