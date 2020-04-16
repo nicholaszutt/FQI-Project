@@ -64,7 +64,6 @@ worst of the three. We suspect, as will be seen again below for the other
 circuits, that this is a consequence of the number of gates needed to implement
 the circuit on the real device.
 
-
 In order to check the readout calibration, it is useful to compare Pauli sets of
 the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These
 plots make the expectation values of the three measurement bases very visible,
@@ -105,15 +104,6 @@ instead states with some degree of entanglement. We felt this was important in
 order to probe our ability to reconstruct arbitrary states using tomography, and
 show that indeed the swapping protocol should work for any entangled pair.
 
-\begin{figure*}
-  \centering
-  \includegraphics[width=\textwidth]{images/swap_burlington.png}
-  \caption{The implementation of the swapping protocol requires many more
-    2-qubit gates on the Burlington device due to it T-shape and low
-    inter-connectivity. This circuit should be compared to Fig.
-    \ref{fig:swapgen}, with just three CNOT gates.}
-  \label{fig:yorktown_connections}
-\end{figure*}
 
 Again we see that the simulation fidelities are 1 within
 statistical error, which means that the swapping of initial Bell-states are done

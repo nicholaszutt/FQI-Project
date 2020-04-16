@@ -60,8 +60,9 @@
 
 \usepackage{titling} % Customizing the title section
 \usepackage{hyperref} % For hyperlinks in the PDF
-\usepackage{appendices}
+\usepackage[page]{appendix}
 \usepackage{pdfpages}
+\renewcommand{\appendixpagename}{\vspace*{\fill}\centering Appendices\vspace*{\fill}}
 
 % SI Units like the fancy Angstrom
 \usepackage{siunitx}
@@ -126,6 +127,12 @@ style=numeric]{biblatex}
 
 \appendix
 \input{appendix}
+
+% \clearpage
+\includepdf[pages=-]{../Circuits/Teleportation.pdf}
+\includepdf[pages=-]{../Circuits/Swap.pdf}
+\includepdf[pages=-]{../Circuits/Purification.pdf}
+\includepdf[pages=-]{../Circuits/Grover.pdf}
 
 %-----------------------------------------------------------------------------
 \end{document}
