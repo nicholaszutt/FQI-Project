@@ -7,7 +7,7 @@ called Qiskit, which uses Python as its main programming language. The written
 codes, made with Jupyter Notebook, for the circuits can be found in the \hyperref[apen]{appendix}. In the following we will describe the circuits,
 mainly focussing on the states and the measurements.
 Thereafter, a summary of the execution of a code will be given.
-
+\newpage
 \subsection{The Teleportation protocol}
 \label{sub:tele}
 Quantum teleportation is a procedure where a quantum state can be transmitted
@@ -121,7 +121,7 @@ First, the circuit makes a not perfectly entangled Bell state by rotating the fi
 
 Generally a not perfectly entangled $\ket{\Phi^+}$ state can be described by the following $\ket{\psi} = \cos{\frac{\theta}{2}}\ket{00} + \sin{\frac{\theta}{2}}\ket{11}$, in which $\theta$ is the angle of rotation along the y-axis. The density matrix of this state, $\rho$, can be calculated as 
 $\rho = \ket{\psi}\bra{\psi} = \cos^2{\frac{\theta}{2}}\ket{00}\bra{00} + \cos{\frac{\theta}{2}}\sin{\frac{\theta}{2}}\left(\ket{00}\bra{11}+\ket{11}\bra{00}\right)+\sin^2{\frac{\theta}{2}}\ket{11}\bra{11}$. 
-The fidelity with respect to the $\ket{\Phi^+}$ state is defined as: $F = \bra{\Phi^+}\rho\ket{\Phi^+}$. Filling in $\rho$ and calculating $F$ will result into $F = \frac{1}{2}\left(1+\sin{\theta}\right)$, which can be rewritten to have $\theta\left(F\right) = \arcsin{\left(2F-1\right)}$. In our case, for $F = 0.75$, the rotation angle $\theta$ would become $\theta = \frac{\pi}{6}$.\newpage
+The fidelity with respect to the $\ket{\Phi^+}$ state is defined as: $F = \bra{\Phi^+}\rho\ket{\Phi^+}$. Filling in $\rho$ and calculating $F$ will result into $F = \frac{1}{2}\left(1+\sin{\theta}\right)$, which can be rewritten to have $\theta\left(F\right) = \arcsin{\left(2F-1\right)}$. In our case, for $F = 0.75$, the rotation angle $\theta$ would become $\theta = \frac{\pi}{6}$.
 
 \subsection{Code execution}
 The circuits are build using Qiskit, a very user friendly open source software that lets the user make quantum circuits and execute them on simulators or devices. IBM their devices are easily implementable in the executions using Qiskit, which gave us the easy choice for using their devices for circuit execution. In the following a concise summary will be given of what steps are taken in the codes for the different circuits. We advise the reader to also have one of our codes visible while reading the summary.
