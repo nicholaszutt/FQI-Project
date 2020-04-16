@@ -170,13 +170,13 @@ in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
 circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
 plots as it is particularly easy, with a Bell state, to know what it is we
 expect from the plots. 
-\newpage
-We expect, of course, large values for the
-$\langle XX \rangle$, $\langle YY \rangle$, $\langle ZZ \rangle$, and otherwise
-very small values, as seen in Fig. \ref{fig:swap_pauli_sim}. The readout
-calibration does a decent job of boosting the like-like correlations, as can
-also be seen from Fig. \ref{fig:swap_density}.
-\newpage
+
+We expect, of course, large values for the $\langle XX \rangle$, $\langle YY
+\rangle$, $\langle ZZ \rangle$, and otherwise very small values, as seen in Fig.
+\ref{fig:swap_pauli_sim}. The readout calibration does a decent job of boosting
+the like-like correlations, as can also be seen from Fig.
+\ref{fig:swap_density}.
+
 \subsection{Entanglement Purification}
 
 \begin{figure}[h!]
@@ -200,7 +200,7 @@ a mere 0.781\% of the time (in other words, the circuit fails to leave the
 unmeasured qubits in a better entangled state 99.22\% of the time!). This means,
 out of the 122,880 shots we perform, only an average of 960 will be successful.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
     \centering
 		\includegraphics[width=.8\linewidth]{images/results/swap_pauli_sim.png}
@@ -220,27 +220,42 @@ out of the 122,880 shots we perform, only an average of 960 will be successful.
 		\label{fig:pur_pauli_cal}
 	\end{subfigure}
 	\caption{The Pauli sets for the expected state and the output of the raw and
-    calibrated device. Data here are taken from the Yorktown device, with an
+    calibrated device. Data here are taken from the Burlington device, with an
     average of 960 shots (0.78\% of 122,880).}
 	\label{fig:purification_paulis}
 \end{figure}
 
 The poorer performance of the Burlington device (as compared to Yorktown)
 evidenced in Fig. \ref{fig:purification_histogram} can be explained by the fact
-that, again, twice as many CNOT gates are required for Burlington (15) than for
-either Melbourne or Yorktown (7 each). What is harder to explain is Melbourne's
-extremely poor performance. The circuit is implemented on qubits 0, 1, 2 and 14
-on Melbourne, so the especially noisy qubit 13 is left out of the system. Our
-current understanding of the connections and gate fidelities for these backends
-does not present an immediate explanation for this large dip in the Melbourne
-fidelities. Further work would be required to understand where exactly the error
-is coming from. It seems clear that the Noisy Simulator model is likewise
-incapable of capturing the error in Melbourne, given the large discrepancy
-between the device and noisy simulator results.
+that, again, twice as many CNOT gates are required for Burlington (15 gates)
+than for either Melbourne or Yorktown (7 gates each). What is harder to explain
+is Melbourne's extremely poor performance. The circuit is implemented on qubits
+0, 1, 2 and 14 on Melbourne, so the especially noisy qubit 13 is left out of the
+system. Our current understanding of the connections and gate fidelities for
+these backends does not present an immediate explanation for this large dip in
+the Melbourne fidelities. Further work would be required to understand where
+exactly the error is coming from. It seems clear that the Noisy Simulator model
+is likewise incapable of capturing the error in Melbourne, given the large
+discrepancy between the device and noisy simulator results.
 
 As with the other circuits, we can compare the Pauli sets of the expected state
 with the raw and calibrated outputs of the device. The result is shown in Fig.
-\ref{fig:purification_paulis}.
+\ref{fig:purification_paulis}. The raw output, from Burlington, is reflective of
+the relatively low fidelity states from this particular backend. We see that the
+correlated expectation values (the $\langle XX \rangle$, $\langle YY \rangle$
+and $\langle ZZ \rangle$) grow appreciably from the raw to calibrated device
+output. However, the \textit{all} expectation values grow, which suggests that
+the increase in the average fidelities from readout calibration may be partly
+spurious. The expected state should have no individual character in the two
+qubits, and the readout calibration as it is done here may be too blunt an
+approach to readout correction to be very effective in this case.
+
+Nonetheless, with this protocol, it is possible to attain fidelities far above
+the input of 75\% (as high as 83.1\% for the raw device on Yorktown, and 89.8\%
+after calibration). The distribution of entanglement, a key prerequisite for the
+creation of quantum networks, is much easier even with very poor input states.
+The only caveat being that one needs a very large number of poorly entangled
+states to start with, in order to make any reasonably high number of Bell states.
 
 \subsection{Grover's Algorithm}
 
