@@ -4,8 +4,7 @@ For this research we have chosen to execute the Teleportation protocol, Grover's
 search algorithm, Entanglement Swapping and Entanglement Purification on the
 devices. The circuits are all made using an open source software development kit
 called Qiskit, which uses Python as its main programming language. The written
-codes, made with Jupyter Notebook, for the circuits can be found in appendix
-{\color{red} \emph{number}}. In the following we will describe the circuits,
+codes, made with Jupyter Notebook, for the circuits can be found in the \hyperref[apen]{appendix}. In the following we will describe the circuits,
 mainly focussing on the states and the measurements.
 Thereafter, a summary of the execution of a code will be given.
 
@@ -100,8 +99,7 @@ First, an arbitrary Bell-like state is created on the first two qubits (q[0] and
 %Did something weird with the equation here or else it wouldn't fit in the text
 $\ket{\Psi} = \frac{1}{\sqrt{8}}(\ket{0000}+\ket{0010}+\ket{0101}-\ket{0111}+\ket{1001}$$-\ket{1011}+\ket{1100}+\ket{1110})$. Now for the measurement part. If the result would be $M_1 = -1$ and $M_2 = +1$, a X-gate is applied to the fourth qubit. This would result in: $\ket{\Psi} = \frac{1}{\sqrt{2}}\left(\ket{0100}+\ket{1101}\right)$. One can see that the first and fourth qubit now have the combined state $\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right) = \ket{\Phi^+}$, so the entanglement is swapped from the first and the second to the first and the fourth qubit.
 
-However, we have to resort to post measurement techniques. Already stated in the
-Section \ref{sec:circuits}.\ref{sub:tele}, gates cannot be applied after
+However, we have to resort to post measurement techniques. Already stated in the \hyperref[sub:tele]{teleportation protocol} section, gates cannot be applied after
 measurement. The circuit that is given to the devices and simulators is shown in
 figure \ref{fig:swapcir}.
 \begin{figure}[h]
