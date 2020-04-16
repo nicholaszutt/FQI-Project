@@ -4,8 +4,7 @@ For this research we have chosen to execute the Teleportation protocol, Grover's
 search algorithm, Entanglement Swapping and Entanglement Purification on the
 devices. The circuits are all made using an open source software development kit
 called Qiskit, which uses Python as its main programming language. The written
-codes, made with Jupyter Notebook, for the circuits can be found in appendix
-{\color{red} \emph{number}}. In the following we will describe the circuits,
+codes, made with Jupyter Notebook, for the circuits can be found in the \hyperref[apen]{appendix}. In the following we will describe the circuits,
 mainly focussing on the states and the measurements.
 Thereafter, a summary of the execution of a code will be given.
 
@@ -27,7 +26,7 @@ Subsequently, a CNOT gate is applied to the second qubit and a
 Hadamard gate to the first qubit. Now the first and second qubit will be
 measured in the Z-basis, with the measurement results being $M_1$ and $M_2$,
 respectively. A X- and/or Z-gate is applied to the third qubit depending on the
-measurement outcome. If $M_1 = +1$ a Z-gate will be applied and if $M_2 = +1$ a
+measurement outcome. If $M_1 = -1$ a Z-gate will be applied and if $M_2 = -1$ a
 X-gate will be applied. This will result in the state $\ket{\psi}$ being
 teleported to the third qubit.
 
@@ -47,7 +46,7 @@ first qubit are randomized every run.)}
 As one can easily see the gates on the third qubit are absent. To
 account for this, a Pauli-X or Pauli-Z matrix is applied to the final state on
 the third qubit, after the measurement. Which works similar to the general
-protocol: if $M_1 = +1$ a Pauli-Z matrix will be applied and if $M_2 = +1$ a
+protocol: if $M_1 = -1$ a Pauli-Z matrix will be applied and if $M_2 = -1$ a
 Pauli-X matrix will be applied. This will, in post measurement, result in the
 state $\ket{\psi}$ being teleported to the third qubit.
 
@@ -84,7 +83,7 @@ multiplied with each state around the mean of the total. In this case the mean
 is $\frac{3\cdot\frac{1}{2}-\frac{1}{2}}{4} = \frac{1}{4}$. Inverting
 $\frac{1}{2}$ about the mean, means that it will become 0. For $-\frac{1}{2}$ it
 will become 1, thus making $\ket{11}$ the only state left. Measuring this will
-result in $M_1 = M_2 = +1$. This result is related to where in $U$ the -1 value
+result in $M_1 = M_2 = -1$. This result is related to where in $U$ the -1 value
 is positioned and in this case the result shows it is in the bottom right corner
 (where we positioned -1 in the first place).
 
@@ -98,10 +97,9 @@ This protocol is, as the name states, a way of changing the entanglement between
 
 First, an arbitrary Bell-like state is created on the first two qubits (q[0] and q[1]). For explanatory reasons, this is now a simple $\ket{\Phi^+}$ Bell state. On the third and fourth qubit, a $\ket{\Phi^+}$ state is also created. This gives the following state: $\ket{\Psi} = \frac{1}{2}\left(\ket{0000}+\ket{0011}+\ket{1100}+\ket{1111}\right)$. So at this point our arbitrary state has entanglement with the first and second qubit, which are the fourth and third number in de bra-ket notation, respectively. Now, a CNOT gate is applied between the second and third qubit resulting in: $\ket{\Psi} = \frac{1}{2}\left(\ket{0000}+\ket{0111}+\ket{1100}+\ket{1011}\right)$. After the application of the Hadamard gate to the second qubit we get eight different possible states: 
 %Did something weird with the equation here or else it wouldn't fit in the text
-$\ket{\Psi} = \frac{1}{\sqrt{8}}(\ket{0000}+\ket{0010}+\ket{0101}-\ket{0111}+\ket{1001}$$-\ket{1011}+\ket{1100}+\ket{1110})$. Now for the measurement part. If the result would be $M_1 = -1$ and $M_2 = +1$, a X-gate is applied to the fourth qubit. This would result in: $\ket{\Psi} = \frac{1}{\sqrt{2}}\left(\ket{0100}+\ket{1101}\right)$. One can see that the first and fourth qubit now have the combined state $\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right) = \ket{\Phi^+}$, so the entanglement is swapped from the first and the second to the first and the fourth qubit.
+$\ket{\Psi} = \frac{1}{\sqrt{8}}(\ket{0000}+\ket{0010}+\ket{0101}-\ket{0111}+\ket{1001}$$-\ket{1011}+\ket{1100}+\ket{1110})$. Now for the measurement part. If the result would be $M_1 = +1$ and $M_2 = -1$, a X-gate is applied to the fourth qubit. This would result in: $\ket{\Psi} = \frac{1}{\sqrt{2}}\left(\ket{0100}+\ket{1101}\right)$. One can see that the first and fourth qubit now have the combined state $\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right) = \ket{\Phi^+}$, so the entanglement is swapped from the first and the second to the first and the fourth qubit.
 
-However, we have to resort to post measurement techniques. Already stated in the
-Section \ref{sec:circuits}.\ref{sub:tele}, gates cannot be applied after
+However, we have to resort to post measurement techniques. Already stated in the \hyperref[sub:tele]{teleportation protocol} section, gates cannot be applied after
 measurement. The circuit that is given to the devices and simulators is shown in
 figure \ref{fig:swapcir}.
 \begin{figure}[h]
@@ -109,7 +107,7 @@ figure \ref{fig:swapcir}.
 	\caption{Entanglement swap circuit used in the measurements. Every measurement a random Bell-like state is created on the first two qubits.}
 	\label{fig:swapcir}
 \end{figure}
-At the beginning of every measurement, a random Bell-like state is created. Now, the circuit runs identical to what is explained before, till the measurements take place. After the measurement, a Pauli-X or Pauli-Z matrix is applied to the fourth qubit. This depends on the measurement outcome of $M_1$ and $M_2$. If $M_1 = +1$ we apply a Pauli-Z matrix and if $M_2 = +1$ we apply a Pauli-X matrix. This will give, excluding any errors, an entangled state (post measurement) which we can use for our calculations and comparisons.
+At the beginning of every measurement, a random Bell-like state is created. Now, the circuit runs identical to what is explained before, till the measurements take place. After the measurement, a Pauli-X or Pauli-Z matrix is applied to the fourth qubit. This depends on the measurement outcome of $M_1$ and $M_2$. If $M_1 = -1$ we apply a Pauli-Z matrix and if $M_2 = -1$ we apply a Pauli-X matrix. This will give, excluding any errors, an entangled state (post measurement) which we can use for our calculations and comparisons.
 
 \subsection{Entanglement purification}
 The entanglement purification is a very useful protocol that ensures a final state is a $\ket{\Phi^+}$ Bell state when the input state is not a perfectly entangled Bell state. This circuit is shown in figure \ref{fig:purcir}. Also, this is the circuit that is used on the devices for measurements.
@@ -119,7 +117,7 @@ The entanglement purification is a very useful protocol that ensures a final sta
 	\label{fig:purcir}
 \end{figure}
 
-First, the circuit makes a not perfectly entangled Bell state by rotating the first and third qubit a certain angle, $\theta$, around the y-axis and subsequently applying a CNOT gate to the first and second and the third and fourth qubit. This angle is determined by a chosen input fidelity, $F$. In this case $F = 0.75$. Later will be explained how this translates to an angle. This will result in the state $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1111}+0.250\left(\ket{0011}+\ket{1100}\right)$. Now a CNOT gate is applied to the first and third qubit giving: $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1011}+0.250\left(\ket{0111}+\ket{1100}\right)$. Thereafter, another CNOT gate is applied to the second and fourth qubit: $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{0011}+0.250\left(\ket{1111}+\ket{1100}\right)$. An important part of this circuit is that the bottom two qubit measurements must give +1 as this will ensure that the state of the top two qubits becomes $\ket{\Psi_{1,2}} = \frac{1}{\sqrt{2}}\left(\ket{11}+\ket{00}\right) = \ket{\Phi^+}$. One could argue that a measurement of -1 for both bottom qubits also gives a Bell state, but this state would not have the same factors, so it will not be perfectly entangled. In the measurements we account for this by only fabricating density matrices for the results where the bottom two qubits measurements where +1.
+First, the circuit makes a not perfectly entangled Bell state by rotating the first and third qubit a certain angle, $\theta$, around the y-axis and subsequently applying a CNOT gate to the first and second and the third and fourth qubit. This angle is determined by a chosen input fidelity, $F$. In this case $F = 0.75$. Later will be explained how this translates to an angle. This will result in the state $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1111}+0.250\left(\ket{0011}+\ket{1100}\right)$. Now a CNOT gate is applied to the first and third qubit giving: $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1011}+0.250\left(\ket{0111}+\ket{1100}\right)$. Thereafter, another CNOT gate is applied to the second and fourth qubit: $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{0011}+0.250\left(\ket{1111}+\ket{1100}\right)$. An important part of this circuit is that the bottom two qubit measurements must give -1 as this will ensure that the state of the top two qubits becomes $\ket{\Psi_{1,2}} = \frac{1}{\sqrt{2}}\left(\ket{11}+\ket{00}\right) = \ket{\Phi^+}$. One could argue that a measurement of +1 for both bottom qubits also gives a Bell state, but this state would not have the same factors, so it will not be perfectly entangled. In the measurements we account for this by only fabricating density matrices for the results where the bottom two qubits measurements where -1.
 
 Generally a not perfectly entangled $\ket{\Phi^+}$ state can be described by the following $\ket{\psi} = \cos{\frac{\theta}{2}}\ket{00} + \sin{\frac{\theta}{2}}\ket{11}$, in which $\theta$ is the angle of rotation along the y-axis. The density matrix of this state, $\rho$, can be calculated as 
 $\rho = \ket{\psi}\bra{\psi} = \cos^2{\frac{\theta}{2}}\ket{00}\bra{00} + \cos{\frac{\theta}{2}}\sin{\frac{\theta}{2}}\left(\ket{00}\bra{11}+\ket{11}\bra{00}\right)+\sin^2{\frac{\theta}{2}}\ket{11}\bra{11}$. 
