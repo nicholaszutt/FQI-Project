@@ -1,18 +1,21 @@
-\section{Devices} Superconducting qubits are composed of an inductor $L$
-connected to a capacitor $C$. These are described by the equations of motion of
-a harmonic oscillator, with flux $\phi$ through the inductor playing the role of
-the canonical position which oscillates out of phase with the charge $Q$ on the
-capacitor, this charge playing the part of the canonical momentum
+\section{Devices}
+
+Superconducting qubits are composed of an inductor $L$ connected to a capacitor
+$C$. These are described by the equations of motion of a harmonic oscillator,
+with flux $\phi$ through the inductor playing the role of the canonical position
+which oscillates out of phase with the charge $Q$ on the capacitor, this charge
+playing the part of the canonical momentum
 \cite{devoret04_implem_qubit_with_super_integ_circuit}. This LC oscillator has a
 resonance frequency that can be specifically engineered as it is given by
-$\omega_0 = \nicefrac{1}{\sqrt{LC}}$. The superconducting nature of the
-oscillator is of critical importance to maintaining coherence as a superposition
-of the ground and first excited states of the LC oscillator decays on a time
-scale given by $\nicefrac{1}{RC}$, where $R$ is the resistance. LC circuits, as
-macroscopic qubits, are attractive partly because their parameters can be
-engineered to whatever values best suit the system in question, but it should be
-noted that their size also entail some individuality to each qubit that may lead
-to variations in their functioning.
+$\omega_0 = \nicefrac{1}{\sqrt{LC}}$, and which typically comes in the microwave
+frequency range for our qubits. The superconducting nature of the oscillator is
+of critical importance to maintaining coherence as a superposition of the ground
+and first excited states of the LC oscillator decays on a time scale given by
+$\nicefrac{1}{RC}$, where $R$ is the resistance. LC circuits, as macroscopic
+qubits, are attractive partly because their parameters can be engineered to
+whatever values best suit the system in question, but it should be noted that
+their size also entail some individuality to each qubit that may lead to
+variations in their functioning.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/energy_spacing_transmon.png}
@@ -22,19 +25,21 @@ junction, splits the level spacing. Figure from
 \cite{dickel20_how_to_make_artif_atoms}.}
   \label{fig:energy_spacing_transmon}
 \end{figure}
-\newpage
-A simple LC circuit alone, though, cannot be an effective qubit. In order to be
-able to control the qubit state effectively, the transition frequency between
-the states $|0\rangle$ and $|1\rangle$ have to be different enough from all
-other transitions, but of course, all transitions between neighbouring states in
-the harmonic oscillator potential are the same size. A degree of anharmonicity
-is brought in by a Josephson tunnel element with its own non-linear inductance
-which is added to the circuit in parallel with the capacitor, make it possible
-to individually drive transitions between specific levels in the LC oscillator,
-as shown in Fig. \ref{fig:energy_spacing_transmon}. The system's dynamics can
-then be effectively confined to just the two lowest energy levels as long as the
-driving frequencies for transitions are properly tuned
-\cite{devoret04_implem_qubit_with_super_integ_circuit}.
+
+A simple LC circuit alone, though, cannot be an effective qubit. Its quantized
+energy levels comes evenly spaced, which means that driving between one
+transition (say from $\ket{0}$ to $\ket{1}$) drives between \textit{all}
+transitions. In order to be able to control the qubit state effectively, the
+transition frequency between the states $\ket{0}$ and $\ket{1}$ have to be
+different enough from all other transitions, but of course, all transitions
+between neighbouring states in the harmonic oscillator potential are the same
+size. A degree of anharmonicity is brought in by a Josephson tunnel element with
+its own non-linear inductance which is added to the circuit in parallel with the
+capacitor, make it possible to individually drive transitions between specific
+levels in the LC oscillator, as shown in Fig. \ref{fig:energy_spacing_transmon}.
+The system's dynamics can then be effectively confined to just the two lowest
+energy levels as long as the driving frequencies for transitions are properly
+tuned \cite{devoret04_implem_qubit_with_super_integ_circuit}.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/transmon_diagram.png}
@@ -105,7 +110,7 @@ equally as important as the single-qubit and CNOT error rates is the degree of
 connectivity in a device. Figure from \cite{ibmq_yorktown}.}
   \label{fig:yorktown_connections}
 \end{figure}
-\newpage
+
 \begin{table} \centering
 	\begin{tabular}{lrrrr} \toprule Backend & $U_2 (\%)$ & $CNOT (\%)$ \\ \midrule
 		Burlington & 0.050 & 1.213 \\ Melbourne & 1.258 & 2.156 \\ Yorktown & 0.689 &
