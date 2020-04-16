@@ -103,10 +103,12 @@ of Pauli matrices mean is that we measure different bits in various basis.
 Rewriting this general expression for a two qubit system gives
 \begin{equation*}
 \rho=\frac{1}{4}\sum_{\vec{v}_i}\Tr\left(\sigma_{v_1}\otimes\sigma_{v_2}\rho\right)\sigma_{v_1}\otimes\sigma_{v_2}
-\end{equation*}\newpage
+\end{equation*}
+
 \begin{equation}
 \rho=\frac{1}{4}\sum_{\vec{v}_i}\left\langle\sigma_{v_1}\otimes\sigma_{v_2}\right\rangle\sigma_{v_1}\otimes\sigma_{v_2}
 \end{equation}
+
 where we sum over all the combinations of basis ($\mathbb{1}$, $X$, $Y$ and
 $Z$). So in total we have fifteen coefficients which can be extracted
 from 9 different circuits for the basis combinations. The nine measurement bases
@@ -128,6 +130,7 @@ readout is compromised by readout error and crosstalk between the qubits. As a
 result of these errors the most-significant qubit (MSQ), least-significant qubit
 (LSQ) and correlations results are all affected. The measured result
 in a specific basis $\overline{m}_{ij}$ is related to the expectation values by
+
 \begin{equation}
 \label{beta}
 \begin{split}
@@ -142,11 +145,13 @@ in a specific basis $\overline{m}_{ij}$ is related to the expectation values by
 \end{pmatrix}
 \end{split}
 \end{equation}
+
 Rather than the two parameters $\beta_0$ and $\beta_1$, we now have a 3x3
 matrix $B$ and an offset vector of $\beta$ values for the MSQ, LSQ, and
 correlations. 
-\newpage
+
 These parameters give the following correction to the expectation values
+
 \begin{equation}
 \begin{split}
 \begin{pmatrix} \left\langle I\sigma_j\right\rangle_{est} \\ \left\langle
@@ -157,11 +162,13 @@ These parameters give the following correction to the expectation values
 \end{pmatrix}\right)
 \end{split}
 \end{equation}
+
 Four calibration circuits are required to determine all the parameters in $B$
 and in the vector $\vec{\beta}$. Each one initializes the state of the two qubits in
 $\ket{00}$, $\ket{01}$, $\ket{10}$, and $\ket{11}$. And each of these
 four initial states give us a part of what is needed to construct $B$ and
 $\vec{\beta}$, from the equation
+
 \begin{equation}
 \begin{pmatrix} \overline{m}_{A,k} \\ \overline{m}_{B,k} \\ \overline{m}_{C,k}
 \\ \overline{m}_{D,k}
@@ -169,10 +176,13 @@ $\vec{\beta}$, from the equation
 \end{pmatrix}\begin{pmatrix} \beta_{0,k} \\ \beta_{1,k} \\ \beta_{2,k} \\
 \beta_{3,k}
 \end{pmatrix}
-\end{equation} where $k$ can be MSQ, LSQ or correlated and the matrix is called
+\end{equation}
+
+where $k$ can be MSQ, LSQ or correlated and the matrix is called
 $M_k$. These relations are derived from formula \ref{beta}, where the expectation
 values are either 1 or -1 depending on the type of circuit. Finally we express
 the beta's in terms of these calibration results \cite{QuantumStateTomography}:
+
 \begin{equation}
 \begin{pmatrix} \beta_{0,k} \\ \beta_{1,k} \\ \beta_{2,k} \\ \beta_{3,k}
 \end{pmatrix}=M_k^{-1}
@@ -180,6 +190,7 @@ the beta's in terms of these calibration results \cite{QuantumStateTomography}:
 \\ \overline{m}_{D,k}
 \end{pmatrix}
 \end{equation}
+
 With these values, we can correct for the error accrued when performing state
 measurement, and determine the two-qubit states that our circuits actually
 produce, rather than the states that we see when we naively combine circuit and
@@ -188,7 +199,7 @@ Superconducting qubits have in general very high fidelity single gate operations
 and likewise near perfect initialization, so the main source of error is in fact
 from measurement. Without correcting for this error a true characterization of
 the circuits would not be possible, as any output fidelity would be massively
-depressed.\newpage
+depressed.
 
 %%% Local Variables:
 %%% mode: latex
