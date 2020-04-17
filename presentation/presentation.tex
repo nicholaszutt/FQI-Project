@@ -1,7 +1,3 @@
-% TU Delft beamer template
-% Author: Erwin Walraven (initial version was created by Maarten Abbink)
-% Delft Universiy of Technology
-
 \documentclass{beamer}
 \usepackage[english]{babel}
 \usepackage{calc}
@@ -14,49 +10,59 @@
 \usepackage{mathtools}
 \usepackage{comment}
 \usepackage{MnSymbol,wasysym}
+\usepackage{bbold}
+\usepackage{braket}
+\usefonttheme[onlymath]{serif}
 
 \setbeamertemplate{navigation symbols}{} % remove navigation symbols
 \mode<presentation>{\usetheme{tud}}
 
 % BIB SETTINGS
-\usepackage[backend=bibtex,firstinits=true,maxnames=30,maxcitenames=20,url=false,style=authoryear]{biblatex}
+\usepackage[backend=bibtex,
+firstinits=true,
+maxnames=30,
+maxcitenames=10,
+url=false,
+eprint=false,
+style=authoryear]{biblatex}
+
 \bibliography{bibfile}
 \setlength\bibitemsep{0.3cm} % space between entries in the reference list
 \renewcommand{\bibfont}{\normalfont\scriptsize}
 \setbeamerfont{footnote}{size=\tiny}
 \renewcommand{\cite}[1]{\footnote<.->[frame]{\fullcite{#1}}}
 
-
-\title[]{The Title of the Presentation}
+\title[]{State Tomography and Post-Measurement Analysis in Qiskit}
 \institute[]{Delft University of Technology, The Netherlands}
-\author{First Author \and Second Author}
-%\date{}
+\author{Jerry Kamer \and Roel van Silfhout \and Nicholas Zutt}
+\date{April 23, 2020}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
 
 \begin{document}
 {
 \setbeamertemplate{footline}{\usebeamertemplate*{minimal footline}}
 \frame{\titlepage}
 }
-
 {\setbeamertemplate{footline}{\usebeamertemplate*{minimal footline}}
-
 }
 
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
 \input{intro}
+
 \input{circuits}
+
 \input{results}
-
-\begin{frame}{Example frame 1}
-This is the first frame
-\end{frame}
-
-\begin{frame}{Example frame 2}
-\begin{block}{Example block}
-\begin{itemize}
-\item item 1
-\item item 2
-\end{itemize}
-\end{block}
-\end{frame}
 
 \end{document}
