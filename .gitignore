@@ -163,8 +163,8 @@ auto/
 *.log
 *.nav
 *.out
+*.pdf
+*.toc
 *.xml
 *.snm
 *.synctex.gz
-*.toc
-*.pdf
