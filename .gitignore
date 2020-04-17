@@ -169,3 +169,6 @@ Circuits/Grover.ipynb
 Circuits/Swap.ipynb
 Circuits/Swap.ipynb
 *.ipynb
+*.nav
+*.snm
+*.toc
