@@ -1,14 +1,11 @@
-\clearpage  % move to another page
+\clearpage
 \begin{appendices}
-%   The following sections include images of the transpiled circuits on the
-%   different backends, followed by the code used to implement the circuits and
-%   sample output.
-  \clearpage % move to another page
+  \label{transpiled_circuits}
+  \clearpage
 
-% TELEPORTATION CIRCUIT 
-\begin{figure*}
+\begin{figure*}[h!]
   \centering
-  \includegraphics[height=0.2\textwidth]{images/teleport_ibmqx2.png}
+  \includegraphics[width=0.8\textwidth]{images/teleport_ibmqx2.png}
   \caption{\textbf{Teleportation:} All backends implement the teleportation
     protocol with the same gate set. Variability between the three backends can
     therefore not be explained by different transpiling needs.}

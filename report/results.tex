@@ -53,16 +53,39 @@ Melbourne backend.}
 The Noisy Simulator is modelled using the single-qubit
 errors, CNOT errors and a model of readout error with symmetric bit flip
 probabilities in each backend \cite{qiskit_org}. As we will continue to see with
-the other circuits, the noise model tends to overestimates the performance of
+the other circuits, the noise model tends to overestimate the performance of
 the backend, but interestingly in this case, for the Melbourne device, we find
 that the noise model almost matches that of the device.
 
 The noise model captures the error in the Burlington device much less
 accurately. We would expect that Burlington would perform almost as well as
 Yorktown from the estimates on the noisy simulator, but in fact it performs the
-worst of the three. We suspect, as will be seen again below for the other
-circuits, that this is a consequence of the number of gates needed to implement
-the circuit on the real device.
+worst of the three. There may therefore be some source for error in the backend
+not yet accounted for that would explain the discrepancy, though further work
+would be required to pinpoint it.
+
+The readout calibration returns a conservative fidelity, defined as
+$1-\epsilon_{01}-\epsilon_{10}$, of 81.13\% (and an average assignment fidelity,
+given by $1-\frac{\epsilon_{01}-\epsilon_{10}}{2}$ of 90.56\%). In order to
+check the readout calibration, it is useful to compare Pauli sets of the
+different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These plots
+make the expectation values of the three measurement bases very visible, which
+eases the comparison of the results. Though not perfect, the output calibrated
+for readout error fits the expected state much better than the original device
+output. We can conclude from this that indeed, a large source of error in the
+system comes from measurement, and the state the circuit actually creates is
+much better than what we would naively assume through tomography alone!
+
+\subsection{Entanglement Swapping}
+
+We now turn to Entanglement Swapping, a protocol largely similar to
+teleportation, in that it teleports one half of an entangled pair. The main
+result can be found in Fig. \ref{fig:swap_histogram}. The swapping protocol was
+implemented for initial states (that is, the top two qubits, the bottom two were
+always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
+instead states with some degree of entanglement. We felt this was important in
+order to probe our ability to reconstruct arbitrary states using tomography, and
+show that indeed the swapping protocol should work for any entangled pair.
 
 \begin{figure}[h!]
   \centering
@@ -72,28 +95,6 @@ the circuit on the real device.
     of 122,880 shots).}
 	\label{fig:swap_histogram}
 \end{figure}
-
-In order to check the readout calibration, it is useful to compare Pauli sets of
-the different outcomes, which we can see in Fig. \ref{fig:tele_paulis}. These
-plots make the expectation values of the three measurement bases very visible,
-which eases the comparison of the results. Though not perfect, the output
-calibrated for readout error fits the expected state much better than the
-original device output. We can conclude from this that indeed, a large source of
-error in the system comes from measurement, and the state the circuit actually
-creates is much better than what we would naively assume through tomography
-alone!
-
-% This thing here is to test a full size picture don't delete.
-% \begin{figure*}
-%   \centering
-%   \includegraphics[width=\textwidth]{images/teleport_ibmqx2.png}
-%   \caption{The most densely connected 5-qubit device at IBM Q. As we will see,
-%     equally as important as the single-qubit and CNOT error rates is the degree of
-%     connectivity in a device. Figure from \cite{ibmq_yorktown}.}
-%   \label{fig:yorktown_connections}
-% \end{figure*}
-
-\subsection{Entanglement Swapping}
 
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth} \centering % include first image
@@ -119,14 +120,26 @@ alone!
 	\label{fig:swap_paulis}
 \end{figure} 
 
-We now turn to Entanglement Swapping, a protocol largely similar to
-teleportation, in that it teleports one half of an entangled pair. The main
-result can be found in Fig. \ref{fig:swap_histogram}. The swapping protocol was
-implemented for initial states (that is, the top two qubits, the bottom two were
-always prepared in $\ket{\Phi^+}$) that were not, in general, Bell states, but
-instead states with some degree of entanglement. We felt this was important in
-order to probe our ability to reconstruct arbitrary states using tomography, and
-show that indeed the swapping protocol should work for any entangled pair.
+Again we see that the simulation fidelities are 1 (within statistical error),
+which means that the swapping of initial Bell-states is done correctly using
+tomography to construct the final state, and post-measurement selection to
+transform specified results. As we expected, fidelities from the noisy simulator
+are better than results from all the devices. Burlington's device performance is
+again much worse than would be expected from the noisy simulator results. Here
+we can appreciate this decline by comparing the number of gates needed to
+implement swap on Burlington to those numbers for Melbourne and Yorktown, as can
+be seen in the \hyperref[transpiled_circuits]{Transpiled Circuits} section of
+the Appendix. Where the former requires 9 CNOT gates to implement the protocol
+on its T-shaped circuitry, the latter two require the minimum of just three.
+This has a huge impact on the output, and places the backend with the highest
+single-qubit U$_2$ and CNOT fidelities in last place when it comes to
+implementing Entanglement Swapping.
+
+In order to appreciate the effect of readout calibration on the output, we show,
+in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
+circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
+plots as it is particularly easy, with a Bell state, to know what it is we
+expect from the plots. 
 
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
@@ -152,26 +165,6 @@ show that indeed the swapping protocol should work for any entangled pair.
     on the Melbourne backend. }
 	\label{fig:swap_density}
 \end{figure}
-
-Again we see that the simulation fidelities are 1 within
-statistical error, which means that the swapping of initial Bell-states are done
-correctly using tomography to construct the final state, and post-measurement
-selection to transform specified results to specific basis. As we expected,
-fidelities from the noisy simulator are much better than results from all the
-devices. Burlington's device performance is again much worse than would be
-expected from the noisy simulator results. We can appreciate this decline by
-comparing the number of gates needed to implement swap on Burlington to those
-numbers for Melbourne and Yorktown. Where the former requires 9 CNOT gates to
-implement the protocol on its T-shaped circuitry, the latter two require the
-minimum of just three. This has huge impact on the output, and places the
-backend with the highest single-qubit U$_2$ and CNOT fidelities in last place
-when it comes to implementing swap.
-
-In order to appreciate the effect of readout calibration on the output, we show,
-in Fig. \ref{fig:swap_paulis}, the Pauli sets for an entanglement swapping
-circuit that takes both input pairs as $\ket{\Phi^+}$. We chose this for our
-plots as it is particularly easy, with a Bell state, to know what it is we
-expect from the plots. 
 
 We expect, of course, large values for the $\langle XX \rangle$, $\langle YY
 \rangle$, $\langle ZZ \rangle$, and otherwise very small values, as seen in Fig.
@@ -245,11 +238,11 @@ with the raw and calibrated outputs of the device. The result is shown in Fig.
 the relatively low fidelity states from this particular backend. We see that the
 correlated expectation values (the $\langle XX \rangle$, $\langle YY \rangle$
 and $\langle ZZ \rangle$) grow appreciably from the raw to calibrated device
-output. However, the \textit{all} expectation values grow, which suggests that
-the increase in the average fidelities from readout calibration may be partly
-spurious. The expected state should have no individual character in the two
-qubits, and the readout calibration as it is done here may be too blunt an
-approach to readout correction to be very effective in this case.
+output. However, it seems that \textit{all} expectation values grow, which
+suggests that the increase in the average fidelities from readout calibration
+may be partly spurious. The expected state should have no individual character
+in the two qubits, and the readout calibration as it is done here may be too
+blunt an approach to readout correction to be very effective in this case.
 
 Nonetheless, with this protocol, it is possible to attain fidelities far above
 the input of 75\% (as high as 83.1\% for the raw device on Yorktown, and 89.8\%
@@ -259,7 +252,9 @@ The only caveat being that one needs a very large number of poorly entangled
 states to start with, in order to make any reasonably high number of Bell states.
 
 \subsection{Grover's Algorithm}
-Lastely, we will turn to Grover's algorithm, a protocol which can find a black box input with high probability. The main results can be found in Fig. \ref{fig:grover_histogram}.
+Lastly, we will turn to Grover's algorithm, with the main results found in Fig.
+\ref{fig:grover_histogram}.
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/results/grover_histogram.pdf}
@@ -268,9 +263,7 @@ Lastely, we will turn to Grover's algorithm, a protocol which can find a black b
 		8,192 shots each (a total of 122,880 shots).}
 	\label{fig:grover_histogram}
 \end{figure}
-We can see that the simulation fidelities are 1, which is expected. The noisy simulator see to correspond well to the device and calibrated fidelities for Yorktown and Melbourne. These devices both show a similar (within statistical error) fidelity for the device and calibrated measurements. Again, the poor performance of Burlington can be easily seen. By comparison to the Yorktown and Melbourne fidelities, the Burlington fidelity is off by about 0.2. Also, the results show that a significant error is present in the measurement readout for Burlington. This can be seen by the increase after the correction. Where Yorktown and Melbourne fidelities increase by about 0.05, Burlington's fidelity increases by about 0.15. As the number of gates for each device is the same, the difference in fidelity is likely accounted to gate and measurement error. With Burlington having the lowest percentage in gate error, the measurement error of the device will probably be significant for Grover's algorithm.
 
-Again, we can show the power of the measurement error correction in Fig. \ref{fig:grover_paulis}.
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -294,7 +287,21 @@ Again, we can show the power of the measurement error correction in Fig. \ref{fi
 		calibrated device, for the -1 on the fourth position in $U$.  Data here are taken from the Burlington device.}
 	\label{fig:grover_paulis}
 \end{figure}
-The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from Fig. \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations. This can also be visualized using the density matrices shown in Fig. \ref{fig:grov_density}.
+
+We can see that the simulation fidelities are 1, which is expected. The noisy
+simulator seems to correspond well to the device and calibrated fidelities for
+Yorktown and Melbourne. These devices both show a similar (within statistical
+error) fidelity for the device and calibrated measurements. Again, the poor
+performance of Burlington can be easily seen. By comparison to the Yorktown and
+Melbourne fidelities, the Burlington fidelity is off by about 0.2. Also, the
+results show that a significant error is present in the measurement readout for
+Burlington. This can be seen by the increase after the correction. Where
+Yorktown and Melbourne fidelities increase by about 0.05, Burlington's fidelity
+increases by about 0.15. As the number of gates for each device is the same, the
+difference in fidelity is likely accounted to gate and measurement error. With
+Burlington having the lowest percentage in gate error, the measurement error of
+the device will probably be significant for Grover's algorithm.
+
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -319,7 +326,24 @@ The output from the device shows a low fidelity pauli set. Where especially $\br
 		on the Burlington backend. }
 	\label{fig:grov_density}
 \end{figure}
-Upon comparing Fig. \ref{fig:grov_density_dev} to \ref{fig:grov_density_cal}, we can clearly see the non relevant states, for example the 01 and 10 states, disappear from the (real part of the) density matrix.
+
+Again, we can show the power of the measurement error correction in Fig.
+\ref{fig:grover_paulis}. The output from the device shows a low fidelity Pauli
+set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation
+value. After the correction we can see that the expectation value of
+$\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of
+$\braket{ZZ}$ has become almost 1, as we expect from Fig.
+\ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in
+expectation value, though this is overall a smaller increase. They still have a
+significant effect on the fidelity. But, it also shows the complete
+disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$.
+Nevertheless, the error correction is a helpful tool for increasing the fidelity
+of states, but has its limitations. This can also be visualized using the
+density matrices shown in Fig. \ref{fig:grov_density}.
+
+Upon comparing Fig. \ref{fig:grov_density_dev} to \ref{fig:grov_density_cal}, we
+can clearly see the non-relevant states, for example the 01 and 10 states,
+disappear from the (real part of the) density matrix.
 
 %%% Local Variables:
 %%% mode: latex
