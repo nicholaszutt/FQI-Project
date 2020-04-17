@@ -15,7 +15,7 @@ the execution of a code will be given.
 Quantum teleportation is a procedure where a quantum state can be transmitted
 from one location to the other. Usually this is done by creating an arbitrary
 state $\ket{\psi}$ on the first qubit and a $\ket{\Phi^+}$ Bell-state on the
-second and third qubit, as can be seen in figure \ref{fig:telgen}.
+second and third qubit, as can be seen in Fig. \ref{fig:telgen}.
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/Teleport_general.png}
@@ -36,7 +36,7 @@ However, to know if the state $\ket{\psi}$ is properly transported, the third
 qubit must be measured. Unfortunately, it is not possible (yet) to apply a gate
 after a measurement on the used devices. So, we will have to resort to post
 measurement techniques, as the gates cannot be applied to the third qubit. The
-circuit that is send to the devices is presented in figure \ref{fig:telcir}.
+circuit that is send to the devices is presented in Fig. \ref{fig:telcir}.
 
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/teleport_circuit.png}
@@ -57,7 +57,7 @@ The Grover search algorithm can find an input given to a black box with a high
 likeliness. In our case, the input that is given is a unitary 4x4 diagonal
 matrix, with three values being +1 and one being -1. The algorithm can find
 which one of the numbers on the diagonal is -1. The circuit that is used in the
-measurements is presented in figure \ref{fig:grocir}.
+measurements is presented in Fig. \ref{fig:grocir}.
 \begin{figure}[h]
   \includegraphics[width=0.48\textwidth]{images/grover_circuit.png}
 	\caption{Grover's search algorithm circuit used for the measurements. (The
@@ -79,7 +79,7 @@ application of the Hadamard gates the total state will be: $\ket{\Psi} =
 \frac{1}{2}\left(\ket{00}+\ket{01}+\ket{10}+\ket{11}\right)$. Now $U$ is applied
 giving: $\ket{\Psi} =
 \frac{1}{2}\left(\ket{00}+\ket{01}+\ket{10}-\ket{11}\right)$. The part after the
-unitary in figure \ref{fig:grocir} is important for the Grover's search
+unitary in Fig. \ref{fig:grocir} is important for the Grover's search
 algorithm and does an inversion about the mean. This inverts the constants
 multiplied with each state around the mean of the total. In this case the mean
 is $\frac{3\cdot\frac{1}{2}-\frac{1}{2}}{4} = \frac{1}{4}$. Inverting
@@ -91,7 +91,7 @@ is positioned and in this case the result shows it is in the bottom right corner
 
 \subsection{Entanglement swap}
 
-This protocol is, as the name states, a way of changing the entanglement between two qubits, for example the first and second, to an entanglement between different qubits, for example the first and fourth. This circuit will first be generally described, and can be found in figure \ref{fig:swapgen}.
+This protocol is, as the name states, a way of changing the entanglement between two qubits, for example the first and second, to an entanglement between different qubits, for example the first and fourth. This circuit will first be generally described, and can be found in Fig. \ref{fig:swapgen}.
 
 \begin{figure}[h]
 	\includegraphics[width=0.48\textwidth]{images/swap_general.png}
@@ -124,7 +124,7 @@ fourth qubit.
 However, we have to resort to post measurement techniques. Already stated in the
 \hyperref[sub:tele]{teleportation protocol} section, gates cannot be applied
 after measurement. The circuit that is given to the devices and simulators is
-shown in figure \ref{fig:swapcir}.
+shown in Fig. \ref{fig:swapcir}.
 
 \begin{figure}[h]
 	\includegraphics[width=0.48\textwidth]{images/swap_circuit.png}
@@ -134,7 +134,7 @@ shown in figure \ref{fig:swapcir}.
 At the beginning of every measurement, a random Bell-like state is created. Now, the circuit runs identical to what is explained before, till the measurements take place. After the measurement, a Pauli-X or Pauli-Z matrix is applied to the fourth qubit. This depends on the measurement outcome of $M_1$ and $M_2$. If $M_1 = -1$ we apply a Pauli-Z matrix and if $M_2 = -1$ we apply a Pauli-X matrix. This will give, excluding any errors, an entangled state (post measurement) which we can use for our calculations and comparisons.
 
 \subsection{Entanglement purification}
-The entanglement purification is a very useful protocol that ensures a final state is a $\ket{\Phi^+}$ Bell state when the input state is not a perfectly entangled Bell state. This circuit is shown in figure \ref{fig:purcir}. Also, this is the circuit that is used on the devices for measurements.
+The entanglement purification is a very useful protocol that ensures a final state is a $\ket{\Phi^+}$ Bell state when the input state is not a perfectly entangled Bell state. This circuit is shown in Fig. \ref{fig:purcir}. Also, this is the circuit that is used on the devices for measurements.
 \begin{figure}[h]
 	\includegraphics[width=0.45\textwidth]{images/purification_circuit.png}
 	\caption{Entanglement purification circuit used in the measurements. The rotation at the beginning of the circuit can be determined using an input fidelity, $F$. In this case $F = 0.75$.}
