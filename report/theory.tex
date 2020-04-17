@@ -19,7 +19,6 @@ qubit,
 \begin{equation}
   \rho=\frac{1}{2}\left(\mathbb{1}+\sum_{i=1}^3\alpha_i\sigma_i\right)
 \end{equation}
-
 where $\mathbb{1}$ is the 2-D identity matrix, $\sigma_i$ are all the
 Pauli-matrices and $\alpha_i$ are real-valued coefficients
 \cite{nielsen10_quant}. Using the trace orthogonality of the Pauli-matrices
@@ -68,7 +67,6 @@ Using the last line we can define the parameters $\beta_0$ and $\beta_1$,
    \overline{m}_Z =\beta_0+\beta_1\left\langle \hat{Z}\right\rangle
 \end{split}
 \end{equation}
-
 From error measurements $\beta_0$ and $\beta_1$ are derived by measuring
 different states on all relevant qubits. These estimates of $\beta_0$ and
 $\beta_1$ are accurate because we know that the initialization of the states
@@ -108,7 +106,6 @@ Rewriting this general expression for a two qubit system gives
 \begin{equation}
 \rho=\frac{1}{4}\sum_{\vec{v}_i}\left\langle\sigma_{v_1}\otimes\sigma_{v_2}\right\rangle\sigma_{v_1}\otimes\sigma_{v_2}
 \end{equation}
-
 where we sum over all the combinations of basis ($\mathbb{1}$, $X$, $Y$ and
 $Z$). So in total we have fifteen coefficients which can be extracted
 from 9 different circuits for the basis combinations. The nine measurement bases
@@ -160,7 +157,6 @@ These parameters give the following correction to the expectation values
 \end{pmatrix}\right)
 \end{split}
 \end{equation}
-
 Four calibration circuits are required to determine all the parameters in $B$
 and in the vector $\vec{\beta}$. Each one initializes the state of the two qubits in
 $\ket{00}$, $\ket{01}$, $\ket{10}$, and $\ket{11}$. And each of these
@@ -175,7 +171,6 @@ $\vec{\beta}$, from the equation
 \beta_{3,k}
 \end{pmatrix}
 \end{equation}
-
 where $k$ can be MSQ, LSQ or correlated and the matrix is called
 $M_k$. These relations are derived from formula \ref{beta}, where the expectation
 values are either 1 or -1 depending on the type of circuit. Finally we express
@@ -188,7 +183,6 @@ the beta's in terms of these calibration results \cite{QuantumStateTomography}:
 \\ \overline{m}_{D,k}
 \end{pmatrix}
 \end{equation}
-
 With these values, we can correct for the error accrued when performing state
 measurement, and determine the two-qubit states that our circuits actually
 produce, rather than the states that we see when we naively combine circuit and
