@@ -4,22 +4,22 @@
 phenomena in order to perform calculations and manipulate data in ways that
 would be impossible on classical computers. Quantum algorithms have been
 developed to teleport data from one place to another, search databases
-efficiently, and factor large numbers quickly, to name a few possible applications. These algorithms will comprise
-the building blocks of the quantum computers of the future, and the current
-efforts towards realizing a truly universal quantum computer centre around
-improving the manipulation of quantum bits (or qubits), the basic units of
-computation in these algorithms.
+efficiently, and factor large numbers quickly, to name a few possible
+applications. These algorithms will comprise the building blocks of the quantum
+computers of the future, and the current efforts towards realizing a truly
+universal quantum computer centre around improving the manipulation of quantum
+bits (or qubits), the basic units of computation in these algorithms.
 
 There are many approaches to creating these qubits. Useful qubits instantiate a
 set of properties that can be at odds with each other at times. For example, a
 desirable trait like the ability to accurately control the state of the qubit
 often conflicts with the desire for the qubit to be long-lived (i.e. to have a
 long coherence time where its quantum state is safe from environmental
-degradation).
+degradation) \cite{nielsen10_quant}.
 
-The various implementations make the trade-off between desirable traits in
-different ways, and a leading approach for creating qubits uses LC circuits in
-superconductors \cite{kjaergaard19_super_qubit}. Already in 2014, the first
+The various physical implementations make the trade-off between desirable traits
+in different ways, and a leading approach for creating qubits uses LC circuits
+in superconductors \cite{kjaergaard19_super_qubit}. Already in 2014, the first
 demonstrated universal gate set on superconducting qubits with an average gate
 fidelity over 99 per cent for all gates was realized
 \cite{barends14_super_quant_circuit_at_surfac}. As the field has progressed
@@ -31,35 +31,37 @@ circuits.
 
 We have simulated and executed a handful of foundational circuits on
 superconducting devices provided publicly by the IBM Quantum Experience. We use
-Qiskit, an open-source quantum computing software development
-platform which has quickly become the most popular means with which to program
-circuits on publicly available quantum computers. Using
-1- and 2-qubit state tomography and post-measurement selection schemes, we
-reconstruct the average output to characterize the fidelity with
-which three different superconductor devices implement our chosen circuits.
+Qiskit, an open-source quantum computing software development platform which has
+quickly become the most popular means with which to program circuits on publicly
+available quantum computers. Using 1- and 2-qubit state tomography and
+post-measurement selection schemes, we reconstruct the average output of the
+circuits to characterize the fidelity with which three different superconducting
+devices implement our chosen circuits.
 
-In this report we present the results of these computations in order to
-discuss the current state of development for publicly available superconducting
-quantum computers. Our aim is to characterize the fidelity with which our
-circuits can be implemented on the devices, and as such it is necessary to 
+In this report we present the results of these computations in order to discuss
+the current state of development for publicly available superconducting quantum
+computers. Our aim is to characterize the fidelity with which our circuits can
+be implemented on the devices, and as such it is necessary to correct for errors
+that might arise from measurement itself, as these errors would lead us to
+believe that the circuits were performing worse than they were in reality.
 
-The purpose of this report is to examine various circuit in order to determine
-if the post measurement method is valid for different circuits and if we can
-improve the results form various devices by implementing 1- and 2 qubit state
-tomography. In the case of for example quantum teleportation or entanglement
-swapping circuit it is impossible to run the original circuits on real devices
-since they require that initial measurements dictate which operators are used on
-the qubits. This is impossible on IBMQ backends because they do not support
-operations after measurements. The goal of these measurements is to determine
-the fidelity of a prepared state to a target pure state. To this end we analyze
-density matrices and Pauli set plots of the final states. Our state tomography
-results also allow us to correct for readout error, which is the error caused by
-the measurement of the qubits in different basis \cite{nielsen10_quant}.
+Post-measurement schemes are also necessary because, in the case of for example
+quantum teleportation or entanglement swapping circuit, it is impossible to run
+the original circuits on real devices since they require that initial
+measurements dictate which operators are used on the qubits. This is impossible
+on IBMQ backends because they do not support operations after measurements. With
+the appropriate corrections, we can circumvent this complication.
+
+The goal of these measurements is to determine the fidelity of a prepared state
+to a target pure state. To this end we analyze density matrices and Pauli set
+plots of the final states. Our state tomography results also allow us to correct
+for readout error, which is the error caused by the measurement of the qubits in
+different basis \cite{nielsen10_quant}.
 
 In this report we first discuss the theory needed to understand state tomography
 and readout error correction. Then we present our methods for developing Qiskit
-software and explain the relevant circuits. In results chapter the measurement
-data is shown and from this data we derive important performance metrics like
+software and explain the relevant circuits. We will present our results for the
+measurement data and from this data we find important performance metrics like
 the fidelity for each circuit on different backends. Finally in the last chapter
 we discuss the conclusion, recommendations and outlook.
 
