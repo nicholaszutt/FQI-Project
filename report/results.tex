@@ -259,7 +259,7 @@ The only caveat being that one needs a very large number of poorly entangled
 states to start with, in order to make any reasonably high number of Bell states.
 
 \subsection{Grover's Algorithm}
-Lastely, we will turn to Grover's algorithm, a protocol which can find a black box input with high probability. The main results can be found in figure \ref{fig:grover_histogram}.
+Lastely, we will turn to Grover's algorithm, a protocol which can find a black box input with high probability. The main results can be found in Fig. \ref{fig:grover_histogram}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/results/grover_histogram.pdf}
@@ -270,7 +270,7 @@ Lastely, we will turn to Grover's algorithm, a protocol which can find a black b
 \end{figure}
 We can see that the simulation fidelities are 1, which is expected. The noisy simulator see to correspond well to the device and calibrated fidelities for Yorktown and Melbourne. These devices both show a similar (within statistical error) fidelity for the device and calibrated measurements. Again, the poor performance of Burlington can be easily seen. By comparison to the Yorktown and Melbourne fidelities, the Burlington fidelity is off by about 0.2. Also, the results show that a significant error is present in the measurement readout for Burlington. This can be seen by the increase after the correction. Where Yorktown and Melbourne fidelities increase by about 0.05, Burlington's fidelity increases by about 0.15. As the number of gates for each device is the same, the difference in fidelity is likely accounted to gate and measurement error. With Burlington having the lowest percentage in gate error, the measurement error of the device will probably be significant for Grover's algorithm.
 
-Again, we can show the power of the measurement error correction in figure \ref{fig:grover_paulis}.
+Again, we can show the power of the measurement error correction in Fig. \ref{fig:grover_paulis}.
 \begin{figure}[h!]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -294,7 +294,7 @@ Again, we can show the power of the measurement error correction in figure \ref{
 		calibrated device, for the -1 on the fourth position in $U$.  Data here are taken from the Burlington device.}
 	\label{fig:grover_paulis}
 \end{figure}
-The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from figure \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations. This can also be visualized using the density matrices shown in figure \ref{fig:grov_density}.
+The output from the device shows a low fidelity pauli set. Where especially $\braket{IZ}$ and $\braket{ZI}$ have a small expectation value. After the correction we can see that the expectation value of $\braket{IZ}$ and $\braket{ZI}$ are significantly increased and the value of $\braket{ZZ}$ has become almost 1, as we expect from Fig. \ref{fig:grov_pauli_sim}. Unfortunately, the unwanted states also increase in expectation value, though this is overall a smaller increase. They still have a significant effect on the fidelity. But, it also shows the complete disappearance of unwanted states like $\braket{ZX}$ and $\braket{ZY}$. Nevertheless, the error correction is a helpful tool for increasing the fidelity of states, but has its limitations. This can also be visualized using the density matrices shown in Fig. \ref{fig:grov_density}.
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -319,7 +319,7 @@ The output from the device shows a low fidelity pauli set. Where especially $\br
 		on the Burlington backend. }
 	\label{fig:grov_density}
 \end{figure}
-Upon comparing figure \ref{fig:grov_density_dev} to \ref{fig:grov_density_cal}, we can clearly see the non relevant states, for example the 01 and 10 states, disappear from the (real part of the) density matrix.
+Upon comparing Fig. \ref{fig:grov_density_dev} to \ref{fig:grov_density_cal}, we can clearly see the non relevant states, for example the 01 and 10 states, disappear from the (real part of the) density matrix.
 
 %%% Local Variables:
 %%% mode: latex
