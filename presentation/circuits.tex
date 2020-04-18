@@ -165,12 +165,9 @@ $\ket{\Psi_{1,2}} = \frac{1}{\sqrt{2}}\left(\ket{11} +\ket{00}\right) =
 		
 	\begin{block}{Circuit run}
 		\begin{itemize}
-			\item $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1111}
-			+0.250\left(\ket{0011}+\ket{1100}\right)$
-			\item $\ket{\Psi} = 0.933\ket{0000}+0.067\ket{1011}
-			+0.250\left(\ket{0111}+\ket{1100}\right)$
-			\item $\ket{\Psi} =
-			0.933\ket{0000}+0.067\ket{0011} +0.250\left(\ket{1111}+\ket{1100}\right)$
+			\item Apply Hadamard gate to the two qubits.
+			\item Apply diagonal matrix with three values of 1 and one -1 (rest of matrix is 0).
+			\item Do an inversion about the mean.
 		\end{itemize}
 	\end{block}
 	
@@ -179,6 +176,7 @@ $\ket{\Psi_{1,2}} = \frac{1}{\sqrt{2}}\left(\ket{11} +\ket{00}\right) =
 		\includegraphics[width=\textwidth]{images/grover_circuit.png}
 		\label{fig:grov_circ}
 	\end{figure}
+Measurement of the circuit gives position of the -1 in the diagonal matrix. For example, $\ket{11}$ measurement is the fourth position
 	
 \end{frame}
 
