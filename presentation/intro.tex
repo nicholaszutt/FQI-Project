@@ -32,7 +32,8 @@
     \end{equation*}
     \begin{equation*}
       \rho=\frac{1}{4}\left(\mathbb{1}
-        + \langle \mathbb{1} \otimes X \rangle \mathbb{1} \otimes \hat{X} + ...\right)
+        + \langle \mathbb{1} \otimes X \rangle \mathbb{1} \otimes \hat{X} +
+         ...\right)
     \end{equation*}
 
     \vspace{0.7cm}
@@ -125,11 +126,50 @@ where the $k$ can be MSQ, LSQ or the correlated outcomes.
   
 \section{Superconducting Qubits}
 
-\begin{frame}{LC oscillators}
+\begin{frame}{Quantum LC oscillators}
+\begin{columns}
+  \column{0.5\textwidth}
+  \includegraphics[width=\textwidth]{images/lc_circuit.png}
 
+  Physics described by the HO Hamiltonian:
+  \begin{equation*}
+    \begin{aligned}
+    H &= \frac{1}{2} C V^2 + \frac{1}{2} L I^2 \\
+      &= \frac{Q^2}{2C} + \frac{\phi^2}{2L}
+    \end{aligned}
+  \end{equation*}
+
+  \column{0.5\textwidth}
+  \textbf{Energy Levels}
+  \includegraphics[width=\textwidth]{images/harm_osc_energies.png}
+
+  Energy spacing is \textbf{even}... not good for a qubit!
+\end{columns}
 
 \end{frame}
 
+\begin{frame}{The Transmon Qubit}
+  \begin{itemize}
+  \item \textbf{First Step:} Introduce Josephson element with non-linear
+inductance to shift energy levels.
+  \item \textbf{Make it a Transmon:} Couple to regular LC circuit to reduce
+    sensitivity to charge noise, by boosting the ratio $\nicefrac{E_J}{E_C}$.
+    Increases $T_1$ coherence times.
+  \end{itemize}
+
+  \begin{columns}
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{images/transmon_diagram.png}
+
+    Unique energy spacing $\rightarrow$ confine dynamics to 2 states, $\ket{0}$
+    and $\ket{1}$
+
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{images/energy_spacing_transmon.png}
+
+  \end{columns}
+\end{frame}
+  
 
 %%% Local Variables:
 %%% mode: latex
