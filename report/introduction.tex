@@ -1,14 +1,14 @@
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{Q} uantum computers exploit quantum mechanical
+\lettrine[nindent=0em,lines=3]{Q} uantum computers will exploit quantum mechanical
 phenomena in order to perform calculations and manipulate data in ways that
 would be impossible on classical computers. Quantum algorithms have been
 developed to teleport data from one place to another, search databases
 efficiently, and factor large numbers quickly, to name a few possible
-applications. These algorithms will comprise the building blocks of the quantum
+applications. These algorithms will comprise key components of the quantum
 computers of the future, and the current efforts towards realizing a truly
 universal quantum computer centre around improving the manipulation of quantum
-bits (or qubits), the basic units of computation in these algorithms.
+bits (or qubits), the basic units of quantum computation, in these algorithms.
 
 There are many approaches to creating these qubits. Useful qubits instantiate a
 set of properties that can be at odds with each other at times. For example, a
@@ -48,15 +48,15 @@ believe that the circuits were performing worse than they were in reality.
 Post-measurement schemes are also necessary because, in the case of for example
 quantum teleportation or entanglement swapping circuit, it is impossible to run
 the original circuits on real devices since they require that initial
-measurements dictate which operators are used on the qubits. This is impossible
-on IBMQ backends because they do not support operations after measurements. With
-the appropriate corrections, we can circumvent this complication.
+measurements dictate which operators are performed on the qubits. This is impossible
+on IBMQ backends today because they do not support operations after measurements. With
+the appropriate corrections though, we can circumvent this complication.
 
 The goal of these measurements is to determine the fidelity of a prepared state
 to a target pure state. To this end we analyze density matrices and Pauli set
 plots of the final states. Our state tomography results also allow us to correct
 for readout error, which is the error caused by the measurement of the qubits in
-different basis \cite{nielsen10_quant}.
+different basis.
 
 In this report we first discuss the theory needed to understand state tomography
 and readout error correction. Then we present our methods for developing Qiskit

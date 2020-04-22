@@ -3,14 +3,13 @@
 
 We have chosen to execute the Teleportation protocol, Entanglement Swapping,
 Entanglement Purification, and Grover's Search Algorithm on the devices. The
-circuits are all written using an open source software development kit called
-Qiskit, which uses Python as its main programming language. The written codes,
-made with Jupyter Notebook, for the circuits can be found in the
-\hyperref[apen]{Appendices}. In the following we will describe the circuits,
-mainly focussing on the states and the measurements. Thereafter, a summary of
-the execution of the code will be given.
+circuits are all written using Qiskit, which uses Python as its main programming
+language. The written codes, made with Jupyter Notebooks, for the circuits can be
+found in the \hyperref[apen]{Appendices}. In the following we will describe the
+circuits, mainly focusing on the states and the measurements. Thereafter, a
+summary of the execution of the code will be given.
 
-\subsection{The Teleportation protocol}
+\subsection{Teleportation}
 \label{sub:tele}
 Quantum teleportation is a procedure where a quantum state can be transmitted
 from one location to the other. Usually this is done by creating an arbitrary
@@ -56,7 +55,7 @@ general protocol: if $M_1 = -1$ a Pauli-Z matrix will be applied and if $M_2 =
 -1$ a Pauli-X matrix will be applied. This will, in post measurement, result in
 the state $\ket{\psi}$ being teleported to the third qubit.
 
-\subsection{Entanglement swap}
+\subsection{Entanglement Swapping}
 
 This protocol is, as the name states, a way of changing the entanglement between two qubits, for example the first and second, to an entanglement between different qubits, for example the first and fourth. This circuit will first be generally described, and can be found in Fig. \ref{fig:swapgen}.
 
@@ -104,7 +103,7 @@ and $M_2$. If $M_1 = -1$ we apply a Pauli-Z matrix and if $M_2 = -1$ we apply a
 Pauli-X matrix. This will give, excluding any errors, an entangled state which
 we can use for our calculations and comparisons.
 
-\subsection{Entanglement purification}
+\subsection{Entanglement Purification}
 
 Entanglement purification is a very useful protocol that takes a large number of
 imperfectly entangled states and, by only choosing to keep pairs based on the
@@ -152,7 +151,7 @@ $\theta\left(F\right) = \arcsin{\left(2F-1\right)}$. In our case, for $F =
 0.75$, the rotation angle $\theta$ would become $\theta = \frac{\pi}{6}$. This
 is how we apply rotations to prepare states with a given fidelity.
 
-\subsection{Grover's search algorithm}
+\subsection{Grover's Search Algorithm}
 The Grover search algorithm can find an input given to a black box with a high
 likelihood using far less time than classical counterparts. Specifically,
 Grover's algorithm offers a quadratic speedup over the best classical search
@@ -195,9 +194,7 @@ positioned and in this case the result shows it is in the bottom right corner
 (where we positioned -1 in the first place).
 
 \subsection{Code execution}
-The circuits are built using Qiskit, a very user friendly open source software
-that lets the user make quantum circuits and execute them on simulators or
-devices. Here we will provide a brief summary of how the codes are executed, for
+Here we will provide a brief summary of how the codes are executed, for
 reference the reader is encouraged to read this explanation with one of the
 scripts included in the \hyperref[apen]{Appendices}.
 

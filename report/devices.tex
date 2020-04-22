@@ -21,7 +21,7 @@ variations in their functioning.
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/energy_spacing_transmon.png}
   \caption{The energy spacing between levels of an LC oscillator are ordinarily
-even, anharmonicity, introduced through the inclusion of a Josephson tunnel
+even, but anharmonicity, introduced through the inclusion of a Josephson tunnel
 junction, splits the level spacing. Figure from
 \cite{dickel20_how_to_make_artif_atoms}.}
   \label{fig:energy_spacing_transmon}
@@ -41,7 +41,7 @@ in parallel with the capacitor, replacing the inductor and making it possible to
 individually drive transitions between specific levels in the LC oscillator, as
 shown in Fig. \ref{fig:energy_spacing_transmon}. The system's dynamics can then
 be effectively confined to just the two lowest energy levels as long as the
-driving frequency for transitions are properly tuned
+driving frequency for transitions is properly tuned
 \cite{devoret04_implem_qubit_with_super_integ_circuit}.
 
 \begin{figure}[h] \centering
@@ -69,9 +69,10 @@ Yorktown.
 parameters to take into account in their characterization is the error rates for
 single- and two-qubit operations. All three backends use the same universal gate
 set, which make their error rates directly comparable. As can be seen in Fig.
-\ref{fig:burlington_connections}, the Burlington backend has the best gate error rates of
-any backend we will consider, with a single-qubit U2 error rate less than
-0.065\% for all qubits and a CNOT error rate of less than 1.645\%.
+\ref{fig:burlington_connections} and Table \ref{tb:average_errors}, the
+Burlington backend has the best gate error rates of any backend we will
+consider, with a single-qubit U2 error rate less than 0.065\% for all qubits and
+a CNOT error rate of less than 1.645\%.
 
 \begin{figure}[h] \centering
 \includegraphics[width=0.48\textwidth]{images/connection_diagram_burlington.png}
