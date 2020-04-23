@@ -92,7 +92,8 @@ show that indeed the swapping protocol should work for any entangled pair.
   \includegraphics[width=0.48\textwidth]{images/results/swap_histogram.pdf}
 	\caption{Fidelity results for the Entanglement Swapping protocol. Error bars
     are estimated by taking the variance over 15 runs of 8,192 shots each (a total
-    of 122,880 shots).}
+    of 122,880 shots). Again, all simulator fidelities are within statistical
+    error of 1.}
 	\label{fig:swap_histogram}
 \end{figure}
 
@@ -215,7 +216,7 @@ an average of 15,360 will be successful.
 	\end{subfigure}
 	\caption{The Pauli sets for the expected state and the output of the raw and
     calibrated device. Data here are taken from the Burlington device, with an
-    average of 15,360 shots (12.5\% of 122,880).}
+    average of 15,360 shots (12.5\% of 122,880) per run.}
 	\label{fig:purification_paulis}
 \end{figure}
 
@@ -288,19 +289,22 @@ Lastly, we will turn to Grover's algorithm, with the main results found in Fig.
 	\label{fig:grover_paulis}
 \end{figure}
 
-We can see that the simulation fidelities are 1, which is expected. The noisy
-simulator seems to correspond well to the device and calibrated fidelities for
-Yorktown and Melbourne. These devices both show a similar (within statistical
-error) fidelity for the device and calibrated measurements. Again, the poor
-performance of Burlington can be easily seen. By comparison to the Yorktown and
-Melbourne fidelities, the Burlington fidelity is off by about 0.2. Also, the
-results show that a significant error is present in the measurement readout for
-Burlington. This can be seen by the increase after the correction. Where
-Yorktown and Melbourne fidelities increase by about 0.05, Burlington's fidelity
-increases by about 0.15. As the number of gates for each device is the same, the
-difference in fidelity is likely accounted to gate and measurement error. With
-Burlington having the lowest percentage in gate error, the measurement error of
-the device will probably be significant for Grover's algorithm.
+The noisy simulator seems to correspond well to the device and calibrated
+fidelities for Yorktown and Melbourne. These devices both show a similar (within
+statistical error) fidelity for the device and calibrated measurements.
+Melbourne's high performance, we suspect, can be explained here by the fact that
+Grover's algorithm operates on just two qubits, and Melbourne's connection
+between qubits 0 and 1 (as seen in Fig. \ref{fig:melbourne_connections}) are
+higher than Yorktown's. Again, the poor performance of Burlington can be easily
+seen. By comparison to the Yorktown and Melbourne fidelities, the Burlington
+fidelity is off by about 0.2. Also, the results show that a significant error is
+present in the measurement readout for Burlington. This can be seen by the
+increase after the correction. Where Yorktown and Melbourne fidelities increase
+by about 0.05, Burlington's fidelity increases by about 0.15. As the number of
+gates for each device is the same, the difference in fidelity is likely
+accounted to gate and measurement error. With Burlington having the lowest
+percentage in gate error, the measurement error of the device will probably be
+significant for Grover's algorithm.
 
 \begin{figure}[h]
 	\begin{subfigure}{.5\textwidth}
@@ -321,9 +325,9 @@ the device will probably be significant for Grover's algorithm.
 		\caption{The calibrated device Density matrix.}
 		\label{fig:grov_density_cal}
 	\end{subfigure}
-	\caption{The entanglement swapping density matrices for the ideal simulator,
-		the device and the calibrated device, taken from Grover's algorithm. Data plotted here is taken for 8192 shots
-		on the Burlington backend. }
+	\caption{The density matrices for Grover's algorithm, he ideal simulator,
+		the device and the calibrated device. Data plotted here is taken for 8192 shots
+		on the Burlington backend.}
 	\label{fig:grov_density}
 \end{figure}
 
